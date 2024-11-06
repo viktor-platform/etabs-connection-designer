@@ -1,0 +1,24 @@
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = 'black'
+line_length = 120
+force_single_line = true
+skip_glob = [".env"]
+
+[tool.pyright]
+venvPath = '.'
+venv = 'venv'
+
+[tool.pylint.'MASTER']
+max-line-length=120
+
+[tool.pylint.'MESSAGES CONTROL']
+disable=[
+    'no-name-in-module',  # Suppresses E0611: No name 'ViktorController' in module 'viktor.core'
+    'too-few-public-methods',  # Suppresses R0903 for empty controllers
+    'unused-argument',  # Suppresses W0613 for kwargs in controller
+    'missing-module-docstring',
+    'import-error',  # Suppresses E0401 when VIKTOR is not installed on pipeline
+]
