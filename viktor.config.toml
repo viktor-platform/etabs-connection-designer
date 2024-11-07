@@ -4,6 +4,6 @@
 app_type = 'simple'
 # assets_path = 'assets'
 # packages = []
-python_version = '3.13'  # '3.9' | '3.10' | '3.11' | '3.12' | '3.13' 
+python_version = '3.11'  # '3.9' | '3.10' | '3.11' | '3.12' | '3.13' 
 # welcome_text = 'welcome.md'
 # registered_name = 'app-name'

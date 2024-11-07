@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 pandas
 openpyxl
 pydantic
-=======
 viktor==14.16.2
->>>>>>> origin/main
