@@ -19,7 +19,7 @@ class Parametrization(vkt.Parametrization):
         dedent("""
         # ETABS Connection Designer
 
-        This app allows you to verify the compliance of shear, moment, and baseplate standard connections based on the internal loads of your load combinations.
+        This app allows you to verify the compliance of shear, moment, and base plate standard connections based on the internal loads of your load combinations.
         """)
     )
     upload_text = vkt.Text(
@@ -44,7 +44,7 @@ class Parametrization(vkt.Parametrization):
         "Avaliable Groups", options=get_possible_columns
     )
     connections.connection_type = vkt.OptionField(
-        "Connection Type", options=["Shear-Tab", "Moment-Enplate", "Fixed-BasePlate"]
+        "Connection Type", options=["Web Cleat", "Moment End Plate", "Base Plate"] # NOTE: The provided base plate data is for a pinned base plate.
     )
     connections.color = vkt.ColorField("Color", default=vkt.Color(128, 128, 128))
 
@@ -56,6 +56,9 @@ class Controller(vkt.Controller):
 
     @vkt.GeometryView("3D model", duration_guess=10, x_axis_to_right=True)
     def generate_structure(self, params, **kwargs):
+        """
+        TODO: we should still populate the whole 3D model even if the connections to groups are not assigned.
+        """
         xlsx_file = params.csv_file.file
         file_content = xlsx_file.getvalue_binary()
         nodes, lines, groups, sections = get_entities(file_content)
