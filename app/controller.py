@@ -1,54 +1,27 @@
 import viktor as vkt
-from textwrap import dedent
-from app.parse_xlsx_files import get_entities
+from viktor.result import DownloadResult
+from viktor.external.word import render_word_file, WordFileTag
 
-NODE_RADIUS = 40
+import app.compliance_check as compliance_check
+from app.models import (
+    OutputItem,
+    ReportData,
+    ComplianceSummaryList,
+    ConnectionSummaryList,
+)
+from app.parse_xlsx_files import get_entities,get_section_by_id
+from app.render import render_model, colors_by_group
+from app.library.load_db import gen_library
 
-def get_possible_columns(params, **kwargs):
-    # TO DO: This is super slow, make it right. 
-    if params.csv_file:
-        xlsx_file = params.csv_file.file
-        file_content = xlsx_file.getvalue_binary()
-        nodes, lines, groups, sections = get_entities(file_content)
-        return [group_name for group_name, group_vals in groups.items()]
-    return ["First upload a .xlsx file"]
+from app.parametrization import Parametrization
+from pathlib import Path
 
+# Global Variables
+report = ReportData()
+comp_summary_list = ComplianceSummaryList()
+con_summary_list = ConnectionSummaryList()
 
-class Parametrization(vkt.Parametrization):
-    main_text = vkt.Text(
-        dedent("""
-        # ETABS Connection Designer
-
-        This app allows you to verify the compliance of shear, moment, and baseplate standard connections based on the internal loads of your load combinations.
-        """)
-    )
-    upload_text = vkt.Text(
-        dedent("""
-        ## Upload your `.xlsx` file!
-
-        Export your model's results in `.xlsx` format from ETABS, click on the file loader below, and upload the `.xlsx` file.
-        """)
-    )
-    csv_file = vkt.FileField("Upload a .xlsx file!", flex=50)
-    lines = vkt.LineBreak()
-
-    assign_text = vkt.Text(
-        dedent("""
-        ## Assign design groups to connection type
-
-        After loading the `.xlsx` file, the app will display the connection groups. You can select in the following array which connection type and color need to be associated with each group!
-        """)
-    )
-    connections = vkt.DynamicArray("Connection Type")
-    connections.groups = vkt.OptionField(
-        "Avaliable Groups", options=get_possible_columns
-    )
-    connections.connection_type = vkt.OptionField(
-        "Connection Type", options=["Shear-Tab", "Moment-Enplate", "Fixed-BasePlate"]
-    )
-    connections.color = vkt.ColorField("Color", default=vkt.Color(128, 128, 128))
-
-
+# Controller
 class Controller(vkt.Controller):
     label = "Structure Controller"
 
@@ -56,16 +29,14 @@ class Controller(vkt.Controller):
 
     @vkt.GeometryView("3D model", duration_guess=10, x_axis_to_right=True)
     def generate_structure(self, params, **kwargs):
-        xlsx_file = params.csv_file.file
-        file_content = xlsx_file.getvalue_binary()
-        nodes, lines, groups, sections = get_entities(file_content)
-        # section_vals keys "name","frame_ids"
-        rendered_sphere = set()
-        sections_group = []  # Stores all 3d entities
+        xlsx_file = params.step_1.csv_file
+        file_content = xlsx_file.file.getvalue_binary()
+        nodes, lines, groups, sections, load_combos = get_entities(file_content)
+
+        # nodes, lines, groups, sections, load_combos = read_file(xlsx_file)[2]
         frame_by_group = {}
-        # Assign colors
         groups_conn_props = {}
-        for con_dict in params.connections:
+        for con_dict in params.step_1.connections:
             groups_conn_props.update(
                 {
                     con_dict.groups: {
@@ -74,67 +45,288 @@ class Controller(vkt.Controller):
                     }
                 }
             )
-            print(groups_conn_props)
-
+        # this avoid double assination of members of courser order matters! need checking
+        frame_color_set = set()
         for group_name, group_vals in groups.items():
-            # material_color = generate_pastel_material()
-
             for frames_in_groups in group_vals["frame_ids"]:
-                frame_by_group.update(
-                    {
-                        frames_in_groups: {
-                            "material": vkt.Material(
-                                color=groups_conn_props[group_name]["color"]
-                            )
-                        }
-                    }
-                )
-
-        for section_name, section_vals in sections.items():
-            for frame_id in section_vals["frame_ids"]:
-                try:
-                    node_id_i = lines[frame_id]["nodeI"]
-                    node_id_j = lines[frame_id]["nodeJ"]
-
-                    node_i = nodes[node_id_i]
-                    node_j = nodes[node_id_j]
-
-                    point_i = vkt.Point(node_i["x"], node_i["y"], node_i["z"])
-                    point_j = vkt.Point(node_j["x"], node_j["y"], node_j["z"])
-
-                    if node_id_i not in rendered_sphere:
-                        sphere_k = vkt.Sphere(
-                            point_i,
-                            radius=NODE_RADIUS,
-                            material=None,
-                            identifier=str(node_id_i),
+                if frames_in_groups not in frame_color_set:
+                    if groups_conn_props.get(group_name):
+                        frame_by_group.update(
+                            {
+                                frames_in_groups: {
+                                    "material": vkt.Material(
+                                        color=groups_conn_props[group_name]["color"]
+                                    )
+                                }
+                            }
                         )
-                        sections_group.append(sphere_k)
-                        rendered_sphere.add(node_id_i)
-
-                    if node_id_j not in rendered_sphere:
-                        sphere_k = vkt.Sphere(
-                            point_j,
-                            radius=NODE_RADIUS,
-                            material=None,
-                            identifier=str(node_id_j),
-                        )
-                        sections_group.append(sphere_k)
-                        rendered_sphere.add(node_id_j)
-
-                    line_k = vkt.Line(point_i, point_j)
-
-                    maybe_color = frame_by_group.get(frame_id)
-                    if maybe_color:
-                        material = maybe_color["material"]
-                        # material = vkt.Material(color=vkt.Color(r=200, g=0, b=200))
                     else:
-                        material = vkt.Material(vkt.Color(r=0, g=0, b=0))
+                        frame_by_group.update(
+                            {
+                                frames_in_groups: {
+                                    "material": vkt.Material(
+                                        color=vkt.Color(r=40, g=40, b=40)
+                                    )
+                                }
+                            }
+                        )
 
-                    section_k = vkt.RectangularExtrusion(
-                        200, 200, line_k, identifier=str(frame_id), material=material
-                    )
-                    sections_group.append(section_k)
-                except:
-                    print("skip")    
+                    frame_color_set.add(frames_in_groups)
+
+            sections_group = render_model(
+                sections=sections,
+                lines=lines,
+                nodes=nodes,
+                frame_by_group=frame_by_group,
+                color_function=colors_by_group,
+            )
+        # plotly_model(lines,nodes,{})
         return vkt.GeometryResult(sections_group)
+
+    @vkt.GeometryView("3D model", duration_guess=10, x_axis_to_right=True)
+    def connection_check(self, params, **kwargs):
+        # Clear output for a new report
+        report.clear()
+        comp_summary_list.clear()
+        con_summary_list.clear()
+        #
+        xlsx_file = params.step_1.csv_file.file
+        file_content = xlsx_file.getvalue_binary()
+        nodes, lines, groups, sections, load_combos = get_entities(file_content)
+        frame_by_group = {}
+        groups_conn_props = {}
+        # Params.step_1.connections -> Dynamic array with Group Name, contype, color
+        # this part just converts from Munch to a dictioanry with the keys bein Group Name
+        for con_dict in params.step_1.connections:
+            conn_props = {
+                "color": con_dict.color,
+                "contype": con_dict.connection_type,
+            }
+            if params.step_1.mode == "Connection Check":
+                conn_props["capacity"] = con_dict.capacities
+            groups_conn_props[con_dict.groups] = conn_props
+        # db -> dictionary with keys equal to conntype Web Cope, Moment End Plate, Baseplate.
+        # The vals are dicts with the main key being section name e.g
+        # {"100UC14":{"15":{"Axial": 304.3, "Shear":55.89}}}
+        db = gen_library()
+        selected_lc = params.step_2.load_combos
+        output_items = []
+
+        if params.step_1.mode == "Connection Check":
+            for group_name, group_vals in groups.items():
+                frame_color_set = set()
+                for frames_in_groups in group_vals["frame_ids"]:
+                    if frames_in_groups not in frame_color_set:
+                        color = None
+
+                        if groups_conn_props.get(group_name):
+                            frame_color_set.add(frames_in_groups)
+                            # This match the DynamicArray content with the conn. db
+                            cont_type = groups_conn_props[group_name]["contype"]
+                            capacity = groups_conn_props[group_name]["capacity"]
+                            section_name = get_section_by_id(sections, frames_in_groups)
+                            frame_con_capacity = db[cont_type]
+                            load = load_combos[frames_in_groups][selected_lc]
+
+                            # Record for report
+                            report_item = OutputItem()
+                            report_item.frame_id = frames_in_groups
+                            report_item.group_name = group_name
+                            report_item.conn_type = cont_type
+                            report_item.load_combo = selected_lc
+                            report_item.section_name = section_name
+
+                            if cont_type == "Moment End Plate":
+                                color, report_item = (
+                                    compliance_check.moment_end_plate_check(
+                                        frame_con_capacity,
+                                        section_name,
+                                        report_item,
+                                        capacity,
+                                        load,
+                                    )
+                                )
+
+                            if cont_type == "Web Cope":
+                                color, report_item = compliance_check.web_cope(
+                                    frame_con_capacity,
+                                    section_name,
+                                    report_item,
+                                    capacity,
+                                    load,
+                                )
+
+                            if cont_type == "Base Plate":
+                                color, report_item = compliance_check.base_plate(
+                                    frame_con_capacity,
+                                    section_name,
+                                    report_item,
+                                    capacity,
+                                    load,
+                                    nodes,
+                                )
+
+                            # Stores item result for reporting
+                            output_items.append(report_item)
+
+                            if color:
+                                frame_by_group.update(
+                                    {
+                                        frames_in_groups: {
+                                            "material": vkt.Material(color=color)
+                                        }
+                                    }
+                                )
+
+            sections_group = render_model(
+                sections=sections,
+                lines=lines,
+                nodes=nodes,
+                frame_by_group=frame_by_group,
+                color_function=colors_by_group,
+            )
+            # Reporting
+            report.table = output_items
+            report.load_combo = selected_lc
+            return vkt.GeometryResult(sections_group)
+
+        if params.step_1.mode == "Connection Design":
+            non_compliant_members = {}
+            design_result = {}
+            for group_name, group_vals in groups.items():
+                if groups_conn_props.get(group_name):
+                    non_compliant_members[group_name] = []
+                    frame_id_list = group_vals["frame_ids"]
+                    cont_type = groups_conn_props[group_name]["contype"]
+                    frame_con_capacity = db[cont_type]
+
+                    for frame_id in frame_id_list:
+                        selected_con_index = 0
+                        section_name = get_section_by_id(sections, frame_id)
+
+                        load = load_combos[frame_id][selected_lc]
+                        report_item = OutputItem()
+                        report_item.frame_id = frame_id
+                        report_item.group_name = group_name
+                        report_item.conn_type = cont_type
+                        report_item.load_combo = selected_lc
+                        report_item.section_name = section_name
+
+                        if cont_type == "Moment End Plate":
+                            con_list = [
+                                "MEP 70%/30% (Moment/Shear)",
+                                "MEP 100%/50% (Moment/Shear)",
+                            ]
+                            design_result[group_name] = con_list[0]
+
+                            for index, current_conin in enumerate(con_list):
+                                capacity = current_conin
+                                color, report_item = (
+                                    compliance_check.moment_end_plate_check(
+                                        frame_con_capacity,
+                                        section_name,
+                                        report_item,
+                                        capacity,
+                                        load,
+                                    )
+                                )
+                                if report_item.check == "ok":
+                                    if index > selected_con_index:
+                                        selected_con_index = index
+                                        design_result[group_name] = con_list[index]
+                                    break
+
+                        if cont_type == "Web Cope":
+                            con_list = ["Web Cope 30%", "Web Cope 40%"]
+                            design_result[group_name] = con_list[0]
+
+                            for index, current_conin in enumerate(con_list):
+                                capacity = current_conin
+
+                                color, report_item = compliance_check.web_cope(
+                                    frame_con_capacity,
+                                    section_name,
+                                    report_item,
+                                    capacity,
+                                    load,
+                                )
+                                if report_item.check == "ok":
+                                    if index > selected_con_index:
+                                        selected_con_index = index
+                                        design_result[group_name] = con_list[index]
+                                    break
+
+                        if cont_type == "Base Plate":
+                            con_list = [
+                                "Base Plate 15%",
+                                "Base Plate 30%",
+                                "Base Plate 50%",
+                                "Base Plate 80%",
+                            ]
+                            design_result[group_name] = con_list[0]
+
+                            for index, current_conin in enumerate(con_list):
+                                capacity = current_conin
+
+                                color, report_item = compliance_check.base_plate(
+                                    frame_con_capacity,
+                                    section_name,
+                                    report_item,
+                                    capacity,
+                                    load,
+                                    nodes,
+                                )
+                                if report_item.check == "ok":
+                                    if index > selected_con_index:
+                                        selected_con_index = index
+                                        design_result[group_name] = con_list[index]
+                                    break
+
+                        if report_item.check == "No ok":
+                            non_compliant_members[group_name].append(frame_id)
+
+                        output_items.append(report_item)
+                        if color:
+                            frame_by_group.update(
+                                {frame_id: {"material": vkt.Material(color=color)}}
+                            )
+
+            sections_group = render_model(
+                sections=sections,
+                lines=lines,
+                nodes=nodes,
+                frame_by_group=frame_by_group,
+                color_function=colors_by_group,
+            )
+            # Reporting
+            report.table = output_items
+            report.load_combo = selected_lc
+            con_summary_list.parse_from_dict(design_result)
+            comp_summary_list.parse_from_dict(non_compliant_members)
+            return vkt.GeometryResult(sections_group)
+
+    def generate_report(self, params, **kwargs):
+        components = []
+
+        template_path = Path(__file__).parent / "library" /"template"/ "report_template.docx"
+
+        if params.step_1.mode == "Connection Design":
+            for key, vals in con_summary_list.serialize().items():
+                components.append(WordFileTag(key, vals))
+
+            for key, vals in comp_summary_list.serialize().items():
+                components.append(WordFileTag(key, vals))
+
+            template_path = (
+                Path(__file__).parent / "library" / "template"/"report_template_design.docx"
+            )
+
+        for key, vals in report.serialize().items():
+            components.append(WordFileTag(key, vals))
+
+        with open(template_path, "rb") as template:
+            word_file = render_word_file(template, components)
+        return DownloadResult(word_file, "Full Calculation Report.docx")
+
+
+# %
