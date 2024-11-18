@@ -1,459 +1,459 @@
 {
-  "200UB18": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 90.34377410949794,
-      "MomentTop": 53.187519220170145,
-      "MomentBottom": 48.20240629994358
+    "200UB18": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 90,
+            "MomentTop": 53,
+            "MomentBottom": 48
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 89,
+            "MomentTop": 50,
+            "MomentBottom": 51
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 88.71007027616841,
-      "MomentTop": 50.190727385013716,
-      "MomentBottom": 51.41258716223399
-    }
-  },
-  "200UB22": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 104.83679965100877,
-      "MomentTop": 66.44897569524258,
-      "MomentBottom": 61.97930653257039
+    "200UB22": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 105,
+            "MomentTop": 66,
+            "MomentBottom": 62
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 95,
+            "MomentTop": 59,
+            "MomentBottom": 66
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 95.02700496359918,
-      "MomentTop": 58.79989514030973,
-      "MomentBottom": 66.39201131308565
-    }
-  },
-  "200UB25": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 126.63523378922596,
-      "MomentTop": 68.56219425261399,
-      "MomentBottom": 68.87791346198925
+    "200UB25": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 127,
+            "MomentTop": 69,
+            "MomentBottom": 69
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 111,
+            "MomentTop": 76,
+            "MomentBottom": 69
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 111.40034327023236,
-      "MomentTop": 75.87503112925549,
-      "MomentBottom": 69.48175986709977
-    }
-  },
-  "200UB30": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 140.1778378831867,
-      "MomentTop": 91.95300864614634,
-      "MomentBottom": 81.93112839605111
+    "200UB30": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 140,
+            "MomentTop": 92,
+            "MomentBottom": 82
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 126,
+            "MomentTop": 92,
+            "MomentBottom": 84
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 126.22010837917651,
-      "MomentTop": 91.94323671212214,
-      "MomentBottom": 84.4689155922176
-    }
-  },
-  "250UB26": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 140.5129237140264,
-      "MomentTop": 77.3699745321416,
-      "MomentBottom": 86.55594685777822
+    "250UB26": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 141,
+            "MomentTop": 77,
+            "MomentBottom": 87
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 140,
+            "MomentTop": 94,
+            "MomentBottom": 92
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 140.30111591383437,
-      "MomentTop": 94.30627562730075,
-      "MomentBottom": 91.9595855032342
-    }
-  },
-  "250UB31": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 152.45138316394966,
-      "MomentTop": 107.30084323984882,
-      "MomentBottom": 118.68919384351253
+    "250UB31": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 152,
+            "MomentTop": 107,
+            "MomentBottom": 119
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 156,
+            "MomentTop": 119,
+            "MomentBottom": 120
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 155.74369575949441,
-      "MomentTop": 119.14468400308735,
-      "MomentBottom": 120.27846108177326
-    }
-  },
-  "250UB37": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 156.28535616756784,
-      "MomentTop": 145.878905032098,
-      "MomentBottom": 134.05924911981214
+    "250UB37": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 156,
+            "MomentTop": 146,
+            "MomentBottom": 134
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 174,
+            "MomentTop": 128,
+            "MomentBottom": 151
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 174.19695994495234,
-      "MomentTop": 127.85588634734728,
-      "MomentBottom": 151.1893515223093
-    }
-  },
-  "310UB32": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 167.54879104232603,
-      "MomentTop": 131.07660693261946,
-      "MomentBottom": 123.33324888595644
+    "310UB32": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 168,
+            "MomentTop": 131,
+            "MomentBottom": 123
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 162,
+            "MomentTop": 144,
+            "MomentBottom": 128
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 162.13563205530082,
-      "MomentTop": 143.8676371669462,
-      "MomentBottom": 127.57620430307126
-    }
-  },
-  "310UB40.4": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 204.57257423378252,
-      "MomentTop": 177.51533153694976,
-      "MomentBottom": 180.12134867974797
+    "310UB40.4": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 205,
+            "MomentTop": 178,
+            "MomentBottom": 180
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 204,
+            "MomentTop": 198,
+            "MomentBottom": 189
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 203.87909692489293,
-      "MomentTop": 197.5544293839932,
-      "MomentBottom": 189.20318991086128
-    }
-  },
-  "310UB46": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 197.94990058551645,
-      "MomentTop": 150.8503352038229,
-      "MomentBottom": 179.85285417323786
+    "310UB46": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 198,
+            "MomentTop": 151,
+            "MomentBottom": 180
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 219,
+            "MomentTop": 193,
+            "MomentBottom": 200
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 219.32107054937242,
-      "MomentTop": 193.1655782656307,
-      "MomentBottom": 199.84304080938517
-    }
-  },
-  "360UB45": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 230.0827254043613,
-      "MomentTop": 210.29082838608952,
-      "MomentBottom": 179.5769370484828
+    "360UB45": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 230,
+            "MomentTop": 210,
+            "MomentBottom": 180
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 245,
+            "MomentTop": 219,
+            "MomentBottom": 218
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 244.58106954383425,
-      "MomentTop": 219.30739913345096,
-      "MomentBottom": 218.34195069047928
-    }
-  },
-  "360UB51": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 244.2811214367018,
-      "MomentTop": 203.75953813505174,
-      "MomentBottom": 199.1634610555769
+    "360UB51": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 244,
+            "MomentTop": 204,
+            "MomentBottom": 199
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 295,
+            "MomentTop": 246,
+            "MomentBottom": 237
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 294.7845230283307,
-      "MomentTop": 246.15729898624667,
-      "MomentBottom": 237.16307865214395
-    }
-  },
-  "360UB57": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 269.6189179139391,
-      "MomentTop": 219.26256526199404,
-      "MomentBottom": 221.09055737207598
+    "360UB57": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 270,
+            "MomentTop": 219,
+            "MomentBottom": 221
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 301,
+            "MomentTop": 282,
+            "MomentBottom": 252
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 301.10283702955144,
-      "MomentTop": 282.02551170414796,
-      "MomentBottom": 252.06581568749317
-    }
-  },
-  "410UB54": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 313.93986474080793,
-      "MomentTop": 241.61482314087732,
-      "MomentBottom": 211.03071453052067
+    "410UB54": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 314,
+            "MomentTop": 242,
+            "MomentBottom": 211
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 315,
+            "MomentTop": 320,
+            "MomentBottom": 294
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 314.89681254809716,
-      "MomentTop": 320.3066006959411,
-      "MomentBottom": 293.90159661037956
-    }
-  },
-  "410UB60": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 347.7872630371125,
-      "MomentTop": 213.53354889035128,
-      "MomentBottom": 229.8879417410976
+    "410UB60": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 348,
+            "MomentTop": 214,
+            "MomentBottom": 230
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 342,
+            "MomentTop": 347,
+            "MomentBottom": 328
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 342.2248368546609,
-      "MomentTop": 347.10114542574,
-      "MomentBottom": 328.0455547630688
-    }
-  },
-  "460UB67": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 387.40016142761215,
-      "MomentTop": 271.469778720349,
-      "MomentBottom": 280.34783307525703
+    "460UB67": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 387,
+            "MomentTop": 271,
+            "MomentBottom": 280
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 382,
+            "MomentTop": 385,
+            "MomentBottom": 323
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 382.2988745031827,
-      "MomentTop": 385.26234393861694,
-      "MomentBottom": 323.18447763135896
-    }
-  },
-  "460UB74.6": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 430.66495399328323,
-      "MomentTop": 326.91519931061976,
-      "MomentBottom": 357.21029300639304
+    "460UB74.6": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 431,
+            "MomentTop": 327,
+            "MomentBottom": 357
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 398,
+            "MomentTop": 422,
+            "MomentBottom": 367
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 397.75157190252327,
-      "MomentTop": 422.45191718065996,
-      "MomentBottom": 367.2306741619669
-    }
-  },
-  "460UB82": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 518.6617175887319,
-      "MomentTop": 334.072530860238,
-      "MomentBottom": 367.17281874316456
+    "460UB82": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 519,
+            "MomentTop": 334,
+            "MomentBottom": 367
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 499,
+            "MomentTop": 528,
+            "MomentBottom": 475
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 498.6041383966399,
-      "MomentTop": 527.9516522871861,
-      "MomentBottom": 474.819131460276
-    }
-  },
-  "530UB82": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 545.8779592401523,
-      "MomentTop": 418.07167437664714,
-      "MomentBottom": 382.03022118087165
+    "530UB82": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 546,
+            "MomentTop": 418,
+            "MomentBottom": 382
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 527,
+            "MomentTop": 501,
+            "MomentBottom": 392
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 527.1827406523037,
-      "MomentTop": 501.35729565672017,
-      "MomentBottom": 392.43111021863194
-    }
-  },
-  "530UB92": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 501.85437489072274,
-      "MomentTop": 495.42576291395574,
-      "MomentBottom": 432.3947683625636
+    "530UB92": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 502,
+            "MomentTop": 495,
+            "MomentBottom": 432
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 527,
+            "MomentTop": 620,
+            "MomentBottom": 647
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 526.8679448260218,
-      "MomentTop": 619.5614234136078,
-      "MomentBottom": 646.979837111874
-    }
-  },
-  "610UB101": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 558.9032773229784,
-      "MomentTop": 663.1749978285703,
-      "MomentBottom": 486.5425343623564
+    "610UB101": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 559,
+            "MomentTop": 663,
+            "MomentBottom": 487
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 659,
+            "MomentTop": 720,
+            "MomentBottom": 743
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 659.4822699933118,
-      "MomentTop": 720.1564379030989,
-      "MomentBottom": 743.262217324617
-    }
-  },
-  "610UB113": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 488.2764688164854,
-      "MomentTop": 584.0610922701903,
-      "MomentBottom": 479.78285125499247
+    "610UB113": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 488,
+            "MomentTop": 584,
+            "MomentBottom": 480
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 702,
+            "MomentTop": 773,
+            "MomentBottom": 704
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 702.3961891109878,
-      "MomentTop": 773.2063255439979,
-      "MomentBottom": 703.7467663152105
-    }
-  },
-  "610UB125": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 648.1689951608612,
-      "MomentTop": 996.2315478347533,
-      "MomentBottom": 777.783924275403
+    "610UB125": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 648,
+            "MomentTop": 996,
+            "MomentBottom": 778
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 710,
+            "MomentTop": 969,
+            "MomentBottom": 793
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 709.8460503797204,
-      "MomentTop": 968.9378619689103,
-      "MomentBottom": 792.8278982231269
-    }
-  },
-  "700WB115": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 492.4814588554481,
-      "MomentTop": 718.7639621535176,
-      "MomentBottom": 519.7383960942802
+    "700WB115": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 492,
+            "MomentTop": 719,
+            "MomentBottom": 520
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 684,
+            "MomentTop": 1095,
+            "MomentBottom": 903
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 684.2999745993573,
-      "MomentTop": 1095.2672931666045,
-      "MomentBottom": 903.250954591257
-    }
-  },
-  "700WB130": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 726.2497981924164,
-      "MomentTop": 1065.8765979514462,
-      "MomentBottom": 829.3890166615225
+    "700WB130": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 726,
+            "MomentTop": 1066,
+            "MomentBottom": 829
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 695,
+            "MomentTop": 1171,
+            "MomentBottom": 1137
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 695.0698719615725,
-      "MomentTop": 1170.8455966220822,
-      "MomentBottom": 1137.212860032048
-    }
-  },
-  "700WB150": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 608.2873865135809,
-      "MomentTop": 1083.0880936264587,
-      "MomentBottom": 934.469890885266
+    "700WB150": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 608,
+            "MomentTop": 1083,
+            "MomentBottom": 934
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 635,
+            "MomentTop": 1319,
+            "MomentBottom": 1080
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 634.534274643663,
-      "MomentTop": 1319.2730112397012,
-      "MomentBottom": 1079.5779462329715
-    }
-  },
-  "700WB173": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 641.029404608134,
-      "MomentTop": 1286.8326354618061,
-      "MomentBottom": 894.9826974661511
+    "700WB173": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 641,
+            "MomentTop": 1287,
+            "MomentBottom": 895
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 599,
+            "MomentTop": 1737,
+            "MomentBottom": 1143
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 598.7720447524182,
-      "MomentTop": 1737.0713420321106,
-      "MomentBottom": 1143.4895393432948
-    }
-  },
-  "800WB122": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 553.339472479893,
-      "MomentTop": 897.128107762562,
-      "MomentBottom": 671.5796695537457
+    "800WB122": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 553,
+            "MomentTop": 897,
+            "MomentBottom": 672
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 784,
+            "MomentTop": 1245,
+            "MomentBottom": 1333
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 784.0112583821988,
-      "MomentTop": 1245.4974049038437,
-      "MomentBottom": 1333.2596012778502
-    }
-  },
-  "800WB146": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 765.6554514154052,
-      "MomentTop": 1061.0533522418498,
-      "MomentBottom": 916.5726713651429
+    "800WB146": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 766,
+            "MomentTop": 1061,
+            "MomentBottom": 917
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 715,
+            "MomentTop": 1678,
+            "MomentBottom": 1178
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 714.9569522718349,
-      "MomentTop": 1678.4899505964347,
-      "MomentBottom": 1178.44916577326
-    }
-  },
-  "800WB168": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 738.3923732607818,
-      "MomentTop": 1287.6004012233896,
-      "MomentBottom": 939.4678453152018
+    "800WB168": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 738,
+            "MomentTop": 1288,
+            "MomentBottom": 939
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 837,
+            "MomentTop": 1823,
+            "MomentBottom": 1306
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 837.4242060129442,
-      "MomentTop": 1823.2170255442695,
-      "MomentBottom": 1306.3997185521162
-    }
-  },
-  "800WB192": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 794.4154920951619,
-      "MomentTop": 1283.907534461888,
-      "MomentBottom": 1089.860324883012
+    "800WB192": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 794,
+            "MomentTop": 1284,
+            "MomentBottom": 1090
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 787,
+            "MomentTop": 2142,
+            "MomentBottom": 1587
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 786.5499192589415,
-      "MomentTop": 2142.495942084445,
-      "MomentBottom": 1586.7368977884498
-    }
-  },
-  "900WB175": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 876.7272052171484,
-      "MomentTop": 1439.9266689693598,
-      "MomentBottom": 1142.9168679144918
+    "900WB175": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 877,
+            "MomentTop": 1440,
+            "MomentBottom": 1143
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 1091,
+            "MomentTop": 2063,
+            "MomentBottom": 2057
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 1091.0126230468184,
-      "MomentTop": 2062.874344329339,
-      "MomentBottom": 2057.035482492366
-    }
-  },
-  "900WB218": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 841.8409835584686,
-      "MomentTop": 2239.2891933394812,
-      "MomentBottom": 1493.0088881940192
+    "900WB218": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 842,
+            "MomentTop": 2239,
+            "MomentBottom": 1493
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 1029,
+            "MomentTop": 2676,
+            "MomentBottom": 2447
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 1029.348135595554,
-      "MomentTop": 2676.1244189303766,
-      "MomentBottom": 2447.0409305130947
-    }
-  },
-  "900WB257": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 796.8814086626927,
-      "MomentTop": 1975.8364535847647,
-      "MomentBottom": 1654.654249325718
-    }
-  },
-  "900WB282": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 824.269445749566,
-      "MomentTop": 2516.5575186534843,
-      "MomentBottom": 1780.4381320917084
-    }
-  },
-  "1000WB215": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 1383.608591787069,
-      "MomentTop": 2439.5738883863237,
-      "MomentBottom": 2285.339994429262
+    "900WB257": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 797,
+            "MomentTop": 1976,
+            "MomentBottom": 1655
+        }
     },
-    "MEP 100%/50% (Moment/Shear)": {
-      "Shear": 1200.992933855609,
-      "MomentTop": 2595.0927176735677,
-      "MomentBottom": 2622.5757285026557
+    "900WB282": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 824,
+            "MomentTop": 2517,
+            "MomentBottom": 1780
+        }
+    },
+    "1000WB215": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 1384,
+            "MomentTop": 2440,
+            "MomentBottom": 2285
+        },
+        "MEP 100%/50% (Moment/Shear)": {
+            "Shear": 1201,
+            "MomentTop": 2595,
+            "MomentBottom": 2623
+        }
+    },
+    "1000WB258": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 1341,
+            "MomentTop": 2119,
+            "MomentBottom": 2392
+        }
+    },
+    "1000WB296": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 1193,
+            "MomentTop": 2639,
+            "MomentBottom": 2400
+        }
+    },
+    "1200WB249": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 1235,
+            "MomentTop": 2894,
+            "MomentBottom": 2843
+        }
+    },
+    "1200WB278": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 1312,
+            "MomentTop": 2670,
+            "MomentBottom": 2957
+        }
+    },
+    "1200WB317": {
+        "MEP 70%/35% (Moment/Shear)": {
+            "Shear": 1380,
+            "MomentTop": 3147,
+            "MomentBottom": 3480
+        }
     }
-  },
-  "1000WB258": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 1340.8327530089277,
-      "MomentTop": 2118.636359026975,
-      "MomentBottom": 2391.8597349271936
-    }
-  },
-  "1000WB296": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 1193.104796668835,
-      "MomentTop": 2639.1966095744256,
-      "MomentBottom": 2399.652100384825
-    }
-  },
-  "1200WB249": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 1235.1941912815896,
-      "MomentTop": 2894.499249951301,
-      "MomentBottom": 2843.107520223198
-    }
-  },
-  "1200WB278": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 1312.2322780928864,
-      "MomentTop": 2670.107747103331,
-      "MomentBottom": 2957.210060681934
-    }
-  },
-  "1200WB317": {
-    "MEP 70%/35% (Moment/Shear)": {
-      "Shear": 1379.9404239867322,
-      "MomentTop": 3146.863735163167,
-      "MomentBottom": 3479.8319653100175
-    }
-  }
 }
