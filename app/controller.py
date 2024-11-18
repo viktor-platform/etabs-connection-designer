@@ -281,9 +281,9 @@ class Controller(vkt.Controller):
         for results_dict in frame_result_list:
             row = list(results_dict.values())
             if results_dict["check"] == "Not ok":
-                row[-1]= vkt.TableCell("Not ok", background_color=vkt.Color.from_hex("#ff6347"))
+                row[-1]= vkt.TableCell("Not ok", background_color=vkt.Color.from_hex("#FF6347"))
             else:
-                row[-1]= vkt.TableCell("Ok", background_color=vkt.Color.from_hex("#FF6347"))
+                row[-1]= vkt.TableCell("Ok", background_color=vkt.Color.from_hex("#98FB98"))
             data.append(row)
            
         return vkt.TableResult(data,column_headers=report_headers)

@@ -82,7 +82,7 @@ def web_cope(frame_con_capacity: dict, section_name: str, report_item: any, capa
                     report_item.check = "ok"
                 else:
                     color = vkt.Color(r=200, g=0, b=0)
-                    report_item.check = "t"
+                    report_item.check = "Not ok"
                     found_break = True  # Set the flag to True
                     break  # Break the inner loop
             if found_break:
