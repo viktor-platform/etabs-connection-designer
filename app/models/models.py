@@ -159,8 +159,8 @@ report_headers = [
     "Shear Force (V) [kN]",
     "Moment (M) [kN·m]",
     "Axial Force (P) [kN]",
-    "Shear Capacity (Vn) [kN]",
-    "Moment Capacity (Mn) [kN·m]",
-    "Axial Capacity (Pn) [kN·m]",
+    "Shear Capacity (phiV) [kN]",
+    "Moment Capacity (phiM) [kN·m]",
+    "Axial Capacity (phiM) [kN·m]",
     "Check [ok/not ok]"
 ]
