@@ -1,6 +1,7 @@
 import io
 import pandas as pd
-from app.models import Node, Group, Frame, Section
+from app.models.models import Node, Group, Frame, Section
+
 
 def extract_sheets(file_content):
     sheet_names = [
@@ -19,6 +20,7 @@ def extract_sheets(file_content):
             dataframes[sheet] = pd.read_excel(excel_file, sheet_name=sheet, skiprows=1)
     return dataframes
 
+
 def get_groups(file_content):
     sheet_name = "Group Assignments"
     excel_data = io.BytesIO(file_content)
@@ -27,6 +29,7 @@ def get_groups(file_content):
     groups_df_cleaned = groups_df.dropna(subset=["Group Name", "Object Unique Name"])
     group_names = groups_df_cleaned["Group Name"].unique().tolist()
     return group_names
+
 
 def get_load_combos(file_content):
     sheet_name = ["Element Joint Forces - Frame"]
@@ -39,6 +42,7 @@ def get_load_combos(file_content):
 
     combos = df_combination["Output Case"].unique().tolist()
     return combos
+
 
 def get_entities(file_content):
     nodes_dict = {}
@@ -55,9 +59,7 @@ def get_entities(file_content):
     element_forces = sheets_data["Element Joint Forces - Frame"]
 
     # Create Nodes
-    joints_df_cleaned = joints_df.dropna(
-        subset=["Object Name", "Global X", "Global Y", "Global Z", "Object Type"]
-    )
+    joints_df_cleaned = joints_df.dropna(subset=["Object Name", "Global X", "Global Y", "Global Z", "Object Type"])
     for _, row in joints_df_cleaned.iterrows():
         if row["Object Type"] == "Joint":
             node_id = int(row["Object Name"])
@@ -77,9 +79,7 @@ def get_entities(file_content):
         group_dicts.update({group_name: group.model_dump()})
 
     # Create Frames
-    column_df_cleaned = column_df.dropna(
-        subset=["Unique Name", "UniquePtI", "UniquePtJ"]
-    )
+    column_df_cleaned = column_df.dropna(subset=["Unique Name", "UniquePtI", "UniquePtJ"])
     for _, row in column_df_cleaned.iterrows():
         if not isinstance(row["Unique Name"], str):  # avoid 'Global'
             frame_id = int(row["Unique Name"])
@@ -98,9 +98,7 @@ def get_entities(file_content):
             frame_dicts.update({frame_id: frame.model_dump()})
 
     # Create sections
-    frame_assigns_summary_df_cleaned = frame_assigns_summary_df.dropna(
-        subset=["Section Property", "UniqueName"]
-    )
+    frame_assigns_summary_df_cleaned = frame_assigns_summary_df.dropna(subset=["Section Property", "UniqueName"])
     section_names = frame_assigns_summary_df_cleaned["Section Property"].unique()
 
     for section_name in section_names:
@@ -136,6 +134,7 @@ def get_entities(file_content):
         comb_forces_dict[unique_name][output_case][joint] = entries
 
     return nodes_dict, frame_dicts, group_dicts, section_dicts, comb_forces_dict
+
 
 def get_section_by_id(sections, section_id):
     for section_name, section_vals in sections.items():

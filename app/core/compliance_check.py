@@ -1,8 +1,7 @@
-
 import viktor as vkt
 
 
-def moment_end_plate_check(frame_con_capacity:dict,section_name: str,report_item:any,capacity:str,load:dict):
+def moment_end_plate_check(frame_con_capacity: dict, section_name: str, report_item: any, capacity: str, load: dict):
     """
     Arguments:
     - frame_con_capacity: Requires `section_name` and `capacity` for Shear, MomentTop, and MomentBottom.
@@ -31,6 +30,9 @@ def moment_end_plate_check(frame_con_capacity:dict,section_name: str,report_item
             if M1 <= 0:
                 if abs(F3) < Shear and abs(M1) < MomentBottom:
                     color = vkt.Color(r=0, g=200, b=0)
+                    report_item.check = "MomentBottom"
+                    report_item.Mn = MomentTop
+
                 else:
                     color = vkt.Color(r=200, g=0, b=0)
                     report_item.Mn = MomentBottom
@@ -41,21 +43,21 @@ def moment_end_plate_check(frame_con_capacity:dict,section_name: str,report_item
                 if abs(F3) < Shear and abs(M1) < MomentTop:
                     color = vkt.Color(r=0, g=200, b=0)
                     report_item.check = "ok"
-                    report_item.Mn = MomentBottom                    
+                    report_item.Mn = MomentTop
                 else:
                     color = vkt.Color(r=200, g=0, b=0)
                     report_item.check = "No ok"
-                    report_item.Mn = MomentBottom
+                    report_item.Mn = MomentTop
 
                     found_break = True
                     break
         if found_break:
             break
 
-    return color,report_item
+    return color, report_item
 
 
-def web_cope(frame_con_capacity:dict,section_name: str,report_item:any,capacity:str,load:dict):
+def web_cope(frame_con_capacity: dict, section_name: str, report_item: any, capacity: str, load: dict):
     """
     Arguments:
     - frame_con_capacity: Requires `section_name` and `capacity` for Shear.
@@ -68,7 +70,7 @@ def web_cope(frame_con_capacity:dict,section_name: str,report_item:any,capacity:
     if frame_con_capacity[section_name].get(capacity):
         Shear = frame_con_capacity[section_name][capacity]["Shear"]
 
-        found_break = False 
+        found_break = False
         for node, list_load in load.items():
             for load_item in list_load:
                 F3 = load_item["F3"]
@@ -92,7 +94,7 @@ def web_cope(frame_con_capacity:dict,section_name: str,report_item:any,capacity:
     return color, report_item
 
 
-def base_plate(frame_con_capacity:dict,section_name: str,report_item:any,capacity:str,load:dict,nodes:dict):
+def base_plate(frame_con_capacity: dict, section_name: str, report_item: any, capacity: str, load: dict, nodes: dict):
     """
     Arguments:
     - frame_con_capacity: Requires `section_name` and `capacity` for Shear.
@@ -116,15 +118,15 @@ def base_plate(frame_con_capacity:dict,section_name: str,report_item:any,capacit
                     F2 = load_item["F2"]
                     F3 = load_item["F3"]
 
-                    ultimate_shear = max([abs(F1),abs(F2)])
+                    ultimate_shear = max([abs(F1), abs(F2)])
 
                     report_item.P = abs(F3)
                     report_item.V = abs(ultimate_shear)
                     report_item.Pn = axial
                     report_item.Vn = shear
-                    
-                    if abs(F3)<axial and ultimate_shear< shear:
-                        color = vkt.Color(r=0,g=200,b=0)
+
+                    if abs(F3) < axial and ultimate_shear < shear:
+                        color = vkt.Color(r=0, g=200, b=0)
                         report_item.check = "ok"
                     else:
                         color = vkt.Color(r=200, g=0, b=0)
@@ -132,11 +134,10 @@ def base_plate(frame_con_capacity:dict,section_name: str,report_item:any,capacit
 
                         found_break = True
                         break
-        
+
             if found_break:
                 break
     else:
         color = vkt.Color(r=200, g=0, b=0)
         report_item.check = "No ok"
-
     return color, report_item

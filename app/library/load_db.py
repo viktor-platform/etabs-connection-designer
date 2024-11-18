@@ -17,6 +17,7 @@ def load_json(file_path: str):
         data = json.load(jsonfile)
     return data
 
+
 def gen_library():
     bp = load_json(r"app\library\db\bp_capacities.json")
     mep = load_json(r"app\library\db\mep_capacities.json")

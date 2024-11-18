@@ -2,15 +2,16 @@ import viktor as vkt
 from viktor.result import DownloadResult
 from viktor.external.word import render_word_file, WordFileTag
 
-import app.compliance_check as compliance_check
-from app.models import (
+import app.core.compliance_check as compliance_check
+from app.models.models import (
     OutputItem,
     ReportData,
     ComplianceSummaryList,
     ConnectionSummaryList,
+    report_headers
 )
-from app.parse_xlsx_files import get_entities,get_section_by_id
-from app.render import render_model, colors_by_group
+from app.core.parse_xlsx_files import get_entities, get_section_by_id
+from app.core.render import render_model, colors_by_group, get_material_color
 from app.library.load_db import gen_library
 
 from app.parametrization import Parametrization
@@ -21,10 +22,10 @@ report = ReportData()
 comp_summary_list = ComplianceSummaryList()
 con_summary_list = ConnectionSummaryList()
 
+
 # Controller
 class Controller(vkt.Controller):
     label = "Structure Controller"
-
     parametrization = Parametrization
 
     @vkt.GeometryView("3D model", duration_guess=10, x_axis_to_right=True)
@@ -33,54 +34,32 @@ class Controller(vkt.Controller):
         file_content = xlsx_file.file.getvalue_binary()
         nodes, lines, groups, sections, load_combos = get_entities(file_content)
 
-        # nodes, lines, groups, sections, load_combos = read_file(xlsx_file)[2]
         frame_by_group = {}
         groups_conn_props = {}
+
+        # Populate connection properties
         for con_dict in params.step_1.connections:
-            groups_conn_props.update(
-                {
-                    con_dict.groups: {
-                        "color": con_dict.color,
-                        "contype": con_dict.connection_type,
-                    }
-                }
-            )
-        # this avoid double assination of members of courser order matters! need checking
+            groups_conn_props[con_dict.groups] = {
+                "color": con_dict.color,
+                "contype": con_dict.connection_type,
+            }
+
+        # Assign colors to frames in groups
         frame_color_set = set()
         for group_name, group_vals in groups.items():
             for frames_in_groups in group_vals["frame_ids"]:
                 if frames_in_groups not in frame_color_set:
-                    if groups_conn_props.get(group_name):
-                        frame_by_group.update(
-                            {
-                                frames_in_groups: {
-                                    "material": vkt.Material(
-                                        color=groups_conn_props[group_name]["color"]
-                                    )
-                                }
-                            }
-                        )
-                    else:
-                        frame_by_group.update(
-                            {
-                                frames_in_groups: {
-                                    "material": vkt.Material(
-                                        color=vkt.Color(r=40, g=40, b=40)
-                                    )
-                                }
-                            }
-                        )
-
+                    material = get_material_color(group_name, groups_conn_props)
+                    frame_by_group[frames_in_groups] = {"material": material}
                     frame_color_set.add(frames_in_groups)
 
-            sections_group = render_model(
-                sections=sections,
-                lines=lines,
-                nodes=nodes,
-                frame_by_group=frame_by_group,
-                color_function=colors_by_group,
-            )
-        # plotly_model(lines,nodes,{})
+        sections_group = render_model(
+            sections=sections,
+            lines=lines,
+            nodes=nodes,
+            frame_by_group=frame_by_group,
+            color_function=colors_by_group,
+        )
         return vkt.GeometryResult(sections_group)
 
     @vkt.GeometryView("3D model", duration_guess=10, x_axis_to_right=True)
@@ -137,14 +116,12 @@ class Controller(vkt.Controller):
                             report_item.section_name = section_name
 
                             if cont_type == "Moment End Plate":
-                                color, report_item = (
-                                    compliance_check.moment_end_plate_check(
-                                        frame_con_capacity,
-                                        section_name,
-                                        report_item,
-                                        capacity,
-                                        load,
-                                    )
+                                color, report_item = compliance_check.moment_end_plate_check(
+                                    frame_con_capacity,
+                                    section_name,
+                                    report_item,
+                                    capacity,
+                                    load,
                                 )
 
                             if cont_type == "Web Cope":
@@ -170,13 +147,7 @@ class Controller(vkt.Controller):
                             output_items.append(report_item)
 
                             if color:
-                                frame_by_group.update(
-                                    {
-                                        frames_in_groups: {
-                                            "material": vkt.Material(color=color)
-                                        }
-                                    }
-                                )
+                                frame_by_group.update({frames_in_groups: {"material": vkt.Material(color=color)}})
 
             sections_group = render_model(
                 sections=sections,
@@ -221,14 +192,12 @@ class Controller(vkt.Controller):
 
                             for index, current_conin in enumerate(con_list):
                                 capacity = current_conin
-                                color, report_item = (
-                                    compliance_check.moment_end_plate_check(
-                                        frame_con_capacity,
-                                        section_name,
-                                        report_item,
-                                        capacity,
-                                        load,
-                                    )
+                                color, report_item = compliance_check.moment_end_plate_check(
+                                    frame_con_capacity,
+                                    section_name,
+                                    report_item,
+                                    capacity,
+                                    load,
                                 )
                                 if report_item.check == "ok":
                                     if index > selected_con_index:
@@ -287,9 +256,7 @@ class Controller(vkt.Controller):
 
                         output_items.append(report_item)
                         if color:
-                            frame_by_group.update(
-                                {frame_id: {"material": vkt.Material(color=color)}}
-                            )
+                            frame_by_group.update({frame_id: {"material": vkt.Material(color=color)}})
 
             sections_group = render_model(
                 sections=sections,
@@ -305,10 +272,26 @@ class Controller(vkt.Controller):
             comp_summary_list.parse_from_dict(non_compliant_members)
             return vkt.GeometryResult(sections_group)
 
+    @vkt.TableView("Frame Results")
+    def results_table_view(self,params, **kwargs):
+        report_dict = report.serialize()
+        frame_result_list = report_dict["table"]
+        data = []
+
+        for results_dict in frame_result_list:
+            row = list(results_dict.values())
+            if results_dict["check"] == "No ok":
+                row[-1]= vkt.TableCell("No ok", background_color=vkt.Color.red())
+            else:
+                row[-1]= vkt.TableCell("ok", background_color=vkt.Color.green())
+            data.append(row)
+           
+        return vkt.TableResult(data,column_headers=report_headers)
+
     def generate_report(self, params, **kwargs):
         components = []
 
-        template_path = Path(__file__).parent / "library" /"template"/ "report_template.docx"
+        template_path = Path(__file__).parent / "library" / "templates" / "report_template.docx"
 
         if params.step_1.mode == "Connection Design":
             for key, vals in con_summary_list.serialize().items():
@@ -317,9 +300,7 @@ class Controller(vkt.Controller):
             for key, vals in comp_summary_list.serialize().items():
                 components.append(WordFileTag(key, vals))
 
-            template_path = (
-                Path(__file__).parent / "library" / "template"/"report_template_design.docx"
-            )
+            template_path = Path(__file__).parent / "library" / "templates" / "report_template_design.docx"
 
         for key, vals in report.serialize().items():
             components.append(WordFileTag(key, vals))
@@ -327,6 +308,3 @@ class Controller(vkt.Controller):
         with open(template_path, "rb") as template:
             word_file = render_word_file(template, components)
         return DownloadResult(word_file, "Full Calculation Report.docx")
-
-
-# %

@@ -1,6 +1,8 @@
 import viktor as vkt
 
 NODE_RADIUS = 40
+
+
 def render_model(
     sections: dict,
     lines: dict,
@@ -45,11 +47,10 @@ def render_model(
             line_k = vkt.Line(point_i, point_j)
 
             material = color_function(frame_by_group, frame_id)
-            section_k = vkt.RectangularExtrusion(
-                200, 200, line_k, identifier=str(frame_id), material=material
-            )
+            section_k = vkt.RectangularExtrusion(200, 200, line_k, identifier=str(frame_id), material=material)
             sections_group.append(section_k)
     return sections_group
+
 
 def colors_by_group(frame_by_group: dict, frame_id: int):
     maybe_color = frame_by_group.get(frame_id)
@@ -58,7 +59,19 @@ def colors_by_group(frame_by_group: dict, frame_id: int):
     else:
         material = vkt.Material(vkt.Color(r=40, g=40, b=40))
     return material
-    
+
+
+def get_material_color(group_name, groups_conn_props):
+    """
+    Determine the material color based on the group name and connection properties.
+    """
+    if group_name in groups_conn_props:
+        return vkt.Material(color=groups_conn_props[group_name]["color"])
+    else:
+        # Default color if the group is not found in the connection properties
+        return vkt.Material(color=vkt.Color(r=40, g=40, b=40))
+
+
 def plotly_model(lines: dict, nodes: dict, color_dict: dict):
     import plotly.graph_objects as go
     import plotly.io as pio
