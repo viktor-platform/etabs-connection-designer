@@ -251,7 +251,7 @@ class Controller(vkt.Controller):
                                         design_result[group_name] = con_list[index]
                                     break
 
-                        if report_item.check == "No ok":
+                        if report_item.check == "Not ok":
                             non_compliant_members[group_name].append(frame_id)
 
                         output_items.append(report_item)
@@ -280,10 +280,10 @@ class Controller(vkt.Controller):
 
         for results_dict in frame_result_list:
             row = list(results_dict.values())
-            if results_dict["check"] == "No ok":
-                row[-1]= vkt.TableCell("No ok", background_color=vkt.Color.red())
+            if results_dict["check"] == "Not ok":
+                row[-1]= vkt.TableCell("Not ok", background_color=vkt.Color.red())
             else:
-                row[-1]= vkt.TableCell("ok", background_color=vkt.Color.green())
+                row[-1]= vkt.TableCell("Ok", background_color=vkt.Color.green())
             data.append(row)
            
         return vkt.TableResult(data,column_headers=report_headers)

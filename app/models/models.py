@@ -162,5 +162,5 @@ report_headers = [
     "Shear Capacity (Vn) [kN]",
     "Moment Capacity (Mn) [kN·m]",
     "Axial Capacity (Pn) [kN·m]",
-    "Check [ok/no ok]"
+    "Check [ok/not ok]"
 ]
