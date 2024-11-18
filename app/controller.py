@@ -84,7 +84,7 @@ class Controller(vkt.Controller):
             if params.step_1.mode == "Connection Check":
                 conn_props["capacity"] = con_dict.capacities
             groups_conn_props[con_dict.groups] = conn_props
-        # db -> dictionary with keys equal to conntype Web Cope, Moment End Plate, Baseplate.
+        # db -> dictionary with keys equal to conntype Web Cleat, Moment End Plate, Baseplate.
         # The vals are dicts with the main key being section name e.g
         # {"100UC14":{"15":{"Axial": 304.3, "Shear":55.89}}}
         db = gen_library()
@@ -124,7 +124,7 @@ class Controller(vkt.Controller):
                                     load,
                                 )
 
-                            if cont_type == "Web Cope":
+                            if cont_type == "Web Cleat":
                                 color, report_item = compliance_check.web_cope(
                                     frame_con_capacity,
                                     section_name,
@@ -185,7 +185,7 @@ class Controller(vkt.Controller):
 
                         if cont_type == "Moment End Plate":
                             con_list = [
-                                "MEP 70%/30% (Moment/Shear)",
+                                "MEP 70%/35% (Moment/Shear)",
                                 "MEP 100%/50% (Moment/Shear)",
                             ]
                             design_result[group_name] = con_list[0]
@@ -205,8 +205,8 @@ class Controller(vkt.Controller):
                                         design_result[group_name] = con_list[index]
                                     break
 
-                        if cont_type == "Web Cope":
-                            con_list = ["Web Cope 30%", "Web Cope 40%"]
+                        if cont_type == "Web Cleat":
+                            con_list = ["Web Cleat 30%", "Web Cleat 40%"]
                             design_result[group_name] = con_list[0]
 
                             for index, current_conin in enumerate(con_list):

@@ -89,7 +89,7 @@ class Parametrization(vkt.Parametrization):
     step_1.connections = vkt.DynamicArray("Assign Groups")
     step_1.connections.groups = vkt.OptionField("Avaliable Groups", options=get_possible_columns)
     step_1.connections.connection_type = vkt.OptionField(
-        "Connection Type", options=["Web Cope", "Moment End Plate", "Base Plate"]
+        "Connection Type", options=["Web Cleat", "Moment End Plate", "Base Plate"]
     )
     step_1.connections.color = vkt.ColorField("Color", default=vkt.Color(128, 128, 128))
     step_1.connections.capacities = vkt.OptionField("Connection Capacity", options=connection_types, visible=visible)
