@@ -39,8 +39,8 @@ class Parametrization(vkt.Parametrization):
         dedent(
             """
             # ETABS Connection Designer
-            This app allows you to verify the compliance of shear,moment, 
-            and baseplate standard connections based on the internal loads 
+            This app allows you to verify the compliance of shear, moment, 
+            and base plate standard connections based on the internal loads 
             of your load combinations.
             """
         )
@@ -48,21 +48,21 @@ class Parametrization(vkt.Parametrization):
     step_1.upload_text = vkt.Text(
         dedent(
             """
-            ## Upload your `.xlsx` file!
+            ## Step 1: Upload Your `.xlsx` File
             Export your model's results in `.xlsx` format from ETABS,
             click on the file loader below, and upload the `.xlsx` file.
         """
         )
     )
     step_1.csv_file = vkt.FileField(
-        "Upload a .xlsx file!",
+        "**Upload a .xlsx file:**",
         flex=50,
     )
     step_1.lines = vkt.LineBreak()
     step_1.calc = vkt.Text(
         dedent(
             """
-            ## Define Calculation Mode
+            ## Step 2: Define Calculation Mode
             You can either analyze the compliance of the connection by
             assigning a capacity, or let the app calculate the optimal
             capacity based on the selected load combination.
@@ -70,7 +70,7 @@ class Parametrization(vkt.Parametrization):
         )
     )
     step_1.mode = vkt.OptionField(
-        "Select Calculation  Mode",
+        "Select Calculation Mode",
         options=["Connection Check", "Connection Design"],
         default="Connection Check",
         variant="radio-inline",
@@ -78,7 +78,7 @@ class Parametrization(vkt.Parametrization):
     step_1.assign_text = vkt.Text(
         dedent(
             """
-            ## Assign design groups to connection type
+            ## Step 3: Assign Connection Types to Design Groups
             After loading the `.xlsx` file, the app will display the connection groups.
             You can select in the following array which connection type and color need to
             be associated with each group!
@@ -87,9 +87,9 @@ class Parametrization(vkt.Parametrization):
     )
 
     step_1.connections = vkt.DynamicArray("Assign Groups")
-    step_1.connections.groups = vkt.OptionField("Avaliable Groups", options=get_possible_columns)
+    step_1.connections.groups = vkt.OptionField("Available Groups", options=get_possible_columns)
     step_1.connections.connection_type = vkt.OptionField(
-        "Connection Type", options=["Web Cope", "Moment End Plate", "Base Plate"]
+        "Connection Type", options=["Web Cleat", "Moment End Plate", "Base Plate"]
     )
     step_1.connections.color = vkt.ColorField("Color", default=vkt.Color(128, 128, 128))
     step_1.connections.capacities = vkt.OptionField("Connection Capacity", options=connection_types, visible=visible)
@@ -98,14 +98,9 @@ class Parametrization(vkt.Parametrization):
     step_2.text = vkt.Text(
         dedent(
             """
-        # Run Calculations!
-        In this step, you can select a load combination. The app will use the inputs
-        defined in the previous step to either verify the compliance of the connection or design the connection,
-        depending on the "application mode" defined earlier.
-
-        On the right-hand side (RHS) of this view, a 3D model with the following color scheme will be displayed.
-        In this model, beams that comply with the selected capacities are colored green; beams that do not comply
-        are colored red.
+        # Run Calculations:
+        Select a load combination to verify or design the connection based on the defined "Calculation Mode".
+        The 3D view shows a model where compliant beams are green, and non-compliant beams are red.
         """
         )
     )
@@ -113,18 +108,11 @@ class Parametrization(vkt.Parametrization):
     step_2.text2 = vkt.Text(
         dedent(
             """ 
-        # Download Report
-        Once the compliance check has been completed, you can download a comprehensive report that provides the results
-        for each member analyzed in the current session. 
-
-        The report will include all relevant details, such as the input parameters, load combinations, connection types,
-        member forces, and compliance status, allowing you to review the design in detail. This document is particularly
-        useful for documentation purposes, sharing with colleagues, or maintaining project records.
-
-        To generate the report, click the button below. The application will prepare and export a Word document summarizing
-        the results for easy access and further use.
+        # Download Report:
+        After the check, download a detailed report with inputs, load combinations, forces, and compliance status.
+        The report, exported as a Word document, is useful for documentation, sharing, or record-keeping.
         """
         )
     )
-    step_2.brak_line = vkt.LineBreak()
+    step_2.break_line = vkt.LineBreak()
     step_2.download_buttoms = vkt.DownloadButton("Generate Report", method="generate_report", longpoll=True)

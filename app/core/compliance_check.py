@@ -36,17 +36,17 @@ def moment_end_plate_check(frame_con_capacity: dict, section_name: str, report_i
                 else:
                     color = vkt.Color(r=200, g=0, b=0)
                     report_item.Mn = MomentBottom
-                    report_item.check = "No ok"
+                    report_item.check = "Not OK"
                     found_break = True
                     break
             elif M1 > 0:
                 if abs(F3) < Shear and abs(M1) < MomentTop:
                     color = vkt.Color(r=0, g=200, b=0)
-                    report_item.check = "ok"
+                    report_item.check = "OK"
                     report_item.Mn = MomentTop
                 else:
                     color = vkt.Color(r=200, g=0, b=0)
-                    report_item.check = "No ok"
+                    report_item.check = "Not OK"
                     report_item.Mn = MomentTop
 
                     found_break = True
@@ -79,17 +79,17 @@ def web_cope(frame_con_capacity: dict, section_name: str, report_item: any, capa
 
                 if abs(F3) < Shear:
                     color = vkt.Color(r=0, g=200, b=0)
-                    report_item.check = "ok"
+                    report_item.check = "OK"
                 else:
                     color = vkt.Color(r=200, g=0, b=0)
-                    report_item.check = "No ok"
+                    report_item.check = "Not OK"
                     found_break = True  # Set the flag to True
                     break  # Break the inner loop
             if found_break:
                 break
     else:
         color = vkt.Color(r=200, g=0, b=0)
-        report_item.check = "No ok"
+        report_item.check = "Not OK"
 
     return color, report_item
 
@@ -127,10 +127,10 @@ def base_plate(frame_con_capacity: dict, section_name: str, report_item: any, ca
 
                     if abs(F3) < axial and ultimate_shear < shear:
                         color = vkt.Color(r=0, g=200, b=0)
-                        report_item.check = "ok"
+                        report_item.check = "OK"
                     else:
                         color = vkt.Color(r=200, g=0, b=0)
-                        report_item.check = "No ok"
+                        report_item.check = "Not OK"
 
                         found_break = True
                         break
@@ -139,5 +139,5 @@ def base_plate(frame_con_capacity: dict, section_name: str, report_item: any, ca
                 break
     else:
         color = vkt.Color(r=200, g=0, b=0)
-        report_item.check = "No ok"
+        report_item.check = "Not OK"
     return color, report_item
