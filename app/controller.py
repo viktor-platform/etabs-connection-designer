@@ -199,7 +199,7 @@ class Controller(vkt.Controller):
                                     capacity,
                                     load,
                                 )
-                                if report_item.check == "ok":
+                                if report_item.check == "OK":
                                     if index > selected_con_index:
                                         selected_con_index = index
                                         design_result[group_name] = con_list[index]
@@ -219,7 +219,7 @@ class Controller(vkt.Controller):
                                     capacity,
                                     load,
                                 )
-                                if report_item.check == "ok":
+                                if report_item.check == "OK":
                                     if index > selected_con_index:
                                         selected_con_index = index
                                         design_result[group_name] = con_list[index]
@@ -245,13 +245,13 @@ class Controller(vkt.Controller):
                                     load,
                                     nodes,
                                 )
-                                if report_item.check == "ok":
+                                if report_item.check == "OK":
                                     if index > selected_con_index:
                                         selected_con_index = index
                                         design_result[group_name] = con_list[index]
                                     break
 
-                        if report_item.check == "Not ok":
+                        if report_item.check == "Not OK":
                             non_compliant_members[group_name].append(frame_id)
 
                         output_items.append(report_item)
@@ -280,10 +280,10 @@ class Controller(vkt.Controller):
 
         for results_dict in frame_result_list:
             row = list(results_dict.values())
-            if results_dict["check"] == "Not ok":
-                row[-1]= vkt.TableCell("Not ok", background_color=vkt.Color.from_hex("#FF6347"))
+            if results_dict["check"] == "Not OK":
+                row[-1]= vkt.TableCell("Not OK", background_color=vkt.Color.from_hex("#FF6347"))
             else:
-                row[-1]= vkt.TableCell("Ok", background_color=vkt.Color.from_hex("#98FB98"))
+                row[-1]= vkt.TableCell("OK", background_color=vkt.Color.from_hex("#98FB98"))
             data.append(row)
            
         return vkt.TableResult(data,column_headers=report_headers)

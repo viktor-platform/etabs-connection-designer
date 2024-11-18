@@ -153,14 +153,14 @@ class ConnectionSummaryList:
 report_headers = [
     "Design Member",
     "Group Name",
-    "Cross Section",
+    "Section",
     "Load Combination",
     "Connection Type",
-    "Shear Force (V) [kN]",
-    "Moment (M) [kN·m]",
-    "Axial Force (P) [kN]",
-    "Shear Capacity (Vn) [kN]",
-    "Moment Capacity (Mn) [kN·m]",
-    "Axial Capacity (Pn) [kN]",
-    "Check [ok/not ok]"
+    "V* [kN]",
+    "M* [kNm]",
+    "P* [kN]",
+    "ΦV [kN]",
+    "ΦM [kNm]",
+    "ΦP [kN]",
+    "OK / Not OK"
 ]
