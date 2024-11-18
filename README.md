@@ -10,7 +10,7 @@ The app has two modes:
 1. You can either analyze the compliance of the connection by assigning a capacity.  
 2. Or let the app calculate the optimal capacity based on the selected load combination.
 
-![Step 1 Screenshot](app.viktor-template/Step1a.jpg)
+![Step 1 Screenshot](.viktor-template/Step1a.jpg)
 
 After loading the `.xlsx` file, the app will display the connection groups. You can select in the array below which connection type and color should be associated with each group!
 
@@ -22,13 +22,13 @@ On the right-hand side (RHS) of this view, a 3D model with the following color s
 - Beams that comply with the selected capacities are colored **green**.
 - Beams that do not comply are colored **red**.
 
-![Step 2 Screenshot](app.viktor-template/Step2a.jpg)
+![Step 2 Screenshot](.viktor-template/Step2a.jpg)
 
 The app allows you to visualize the frame's internal loads and capacities in a table view. Frames that comply with the assessment are highlighted in green, while those that do not are highlighted in red. You can export this view to an `.xlsx` file by clicking the **Export** button located at the bottom left.
 
-![Step 2 Table View](app.viktor-template/Step2b.jpg)
+![Step 2 Table View](.viktor-template/Step2b.jpg)
 
 Finally, you can download a comprehensive report that provides the results for each member analyzed in the current session.  
 The report will include all relevant details, such as the input parameters, load combinations, and connection types.
 
-![Report Screenshot](app.viktor-template/Step2c.jpg)
+![Report Screenshot](.viktor-template/Step2c.jpg)
