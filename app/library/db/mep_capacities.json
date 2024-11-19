@@ -1,5 +1,5 @@
 {
-    "200UB18": {
+    "200UB18.2": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 90,
             "MomentTop": 53,
@@ -11,7 +11,7 @@
             "MomentBottom": 51
         }
     },
-    "200UB22": {
+    "00UB22.3": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 105,
             "MomentTop": 66,
@@ -23,7 +23,7 @@
             "MomentBottom": 66
         }
     },
-    "200UB25": {
+    "200UB25.4": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 127,
             "MomentTop": 69,
@@ -35,7 +35,7 @@
             "MomentBottom": 69
         }
     },
-    "200UB30": {
+    "200UB29.8": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 140,
             "MomentTop": 92,
@@ -47,7 +47,7 @@
             "MomentBottom": 84
         }
     },
-    "250UB26": {
+    "250UB25.7": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 141,
             "MomentTop": 77,
@@ -59,7 +59,7 @@
             "MomentBottom": 92
         }
     },
-    "250UB31": {
+    "250UB31.4": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 152,
             "MomentTop": 107,
@@ -71,7 +71,7 @@
             "MomentBottom": 120
         }
     },
-    "250UB37": {
+    "250UB37.3": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 156,
             "MomentTop": 146,
@@ -83,7 +83,7 @@
             "MomentBottom": 151
         }
     },
-    "310UB32": {
+    "310UB32.0": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 168,
             "MomentTop": 131,
@@ -107,7 +107,7 @@
             "MomentBottom": 189
         }
     },
-    "310UB46": {
+    "310UB46.2": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 198,
             "MomentTop": 151,
@@ -119,7 +119,7 @@
             "MomentBottom": 200
         }
     },
-    "360UB45": {
+    "360UB44.7": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 230,
             "MomentTop": 210,
@@ -131,7 +131,7 @@
             "MomentBottom": 218
         }
     },
-    "360UB51": {
+    "360UB50.7": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 244,
             "MomentTop": 204,
@@ -143,7 +143,7 @@
             "MomentBottom": 237
         }
     },
-    "360UB57": {
+    "360UB56.7": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 270,
             "MomentTop": 219,
@@ -155,7 +155,7 @@
             "MomentBottom": 252
         }
     },
-    "410UB54": {
+    "410UB53.7": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 314,
             "MomentTop": 242,
@@ -167,7 +167,7 @@
             "MomentBottom": 294
         }
     },
-    "410UB60": {
+    "410UB59.7": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 348,
             "MomentTop": 214,
@@ -179,7 +179,7 @@
             "MomentBottom": 328
         }
     },
-    "460UB67": {
+    "460UB67.1": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 387,
             "MomentTop": 271,
@@ -203,7 +203,7 @@
             "MomentBottom": 367
         }
     },
-    "460UB82": {
+    "460UB82.1": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 519,
             "MomentTop": 334,
@@ -215,7 +215,7 @@
             "MomentBottom": 475
         }
     },
-    "530UB82": {
+    "530UB82.0": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 546,
             "MomentTop": 418,
@@ -227,7 +227,7 @@
             "MomentBottom": 392
         }
     },
-    "530UB92": {
+    "530UB92.4": {
         "MEP 70%/35% (Moment/Shear)": {
             "Shear": 502,
             "MomentTop": 495,
