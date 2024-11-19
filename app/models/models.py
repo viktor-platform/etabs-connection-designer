@@ -46,6 +46,7 @@ class OutputItem(BaseModel):
     Vn: float | None = None
     Mn: float | None = None
     Pn: float | None = None
+    capacity_ratio: str | None = None
     check: str | None = None
 
     def serialize(self) -> dict[str, any]:
@@ -162,5 +163,6 @@ report_headers = [
     "ΦV [kN]",
     "ΦM [kNm]",
     "ΦP [kN]",
-    "OK / Not OK"
+    "Capacity Ratio",
+    "OK / Not OK",
 ]

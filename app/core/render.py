@@ -196,3 +196,87 @@ def plotly_model(lines: dict, nodes: dict, color_dict: dict):
     # Create the figure and save it as a PNG image
     fig = go.Figure(data=data, layout=layout)
     fig.write_image("plot.png")
+
+
+def get_jet_color(value):
+    """
+    Returns an RGB tuple for a value between 0 and 1 using the 'jet' colormap.
+    """
+    r = g = b = 0
+    if value <= 0.25:
+        r = 0
+        g = value * 4
+        b = 1
+    elif value <= 0.5:
+        r = 0
+        g = 1
+        b = 1 - 4 * (value - 0.25)
+    elif value <= 0.75:
+        r = 4 * (value - 0.5)
+        g = 1
+        b = 0
+    else:
+        r = 1
+        g = 1 - 4 * (value - 0.75)
+        b = 0
+    # Convert to 0-255 RGB values
+    r = int(max(0, min(r, 1)) * 255)
+    g = int(max(0, min(g, 1)) * 255)
+    b = int(max(0, min(b, 1)) * 255)
+    return r, g, b
+
+
+def render_legend(sections_group: list):
+    legend_cord_x = 0
+    legend_cord_y = 0
+    legend_cord_z = 30000  # Top of the legend
+    legend_cord_z2 = 20000  # Bottom of the legend
+
+    legend_height = legend_cord_z - legend_cord_z2
+    num_sections = 12
+    section_height = legend_height / num_sections
+
+    # Generate color values
+    values = [i / (num_sections - 1) for i in range(num_sections)]
+
+    # Create legend sections
+    for i in range(num_sections):
+        value = values[i]
+        r, g, b = get_jet_color(value)
+        color = vkt.Color(r, g, b)
+
+        z_start = legend_cord_z2 + i * section_height
+        z_end = z_start + section_height
+
+        start_point = vkt.Point(legend_cord_x, legend_cord_y, z_start)
+        end_point = vkt.Point(legend_cord_x, legend_cord_y, z_end)
+        line = vkt.Line(start_point, end_point)
+
+        section = vkt.RectangularExtrusion(700, 700, line, material=vkt.Material(color=color, opacity=0.8))
+        sections_group.append(section)
+
+    # Create labels with the same offset as your original code
+    labels = []
+
+    # Offset string for alignment
+    offset_str = " " * 33
+    # Bottom label: 'Compliant'
+    text_point_bottom = vkt.Point(legend_cord_x, legend_cord_y, legend_cord_z2)
+    label_bottom = vkt.Label(text_point_bottom, f"{offset_str}Compliant", size_factor=0.7, color=vkt.Color(0, 0, 0))
+    labels.append(label_bottom)
+
+    # Middle labels: 'Capacity Ratio: 0.3' and 'Capacity Ratio: 0.7'
+    ratios = [0.3, 0.7]
+    for ratio in ratios:
+        z = legend_cord_z2 + ratio * legend_height
+        text_point = vkt.Point(legend_cord_x, legend_cord_y, z)
+        label_text = f"{offset_str}Capacity Ratio: {ratio}"
+        label = vkt.Label(text_point, label_text, size_factor=0.7, color=vkt.Color(0, 0, 0))
+        labels.append(label)
+
+    # Top label: 'Non Compliant'
+    text_point_top = vkt.Point(legend_cord_x, legend_cord_y, legend_cord_z)
+    label_top = vkt.Label(text_point_top, f"{offset_str}Non Compliant", size_factor=0.7, color=vkt.Color(0, 0, 0))
+    labels.append(label_top)
+
+    return sections_group, labels

@@ -94,7 +94,7 @@ class Parametrization(vkt.Parametrization):
     step_1.connections.color = vkt.ColorField("Color", default=vkt.Color(128, 128, 128))
     step_1.connections.capacities = vkt.OptionField("Connection Capacity", options=connection_types, visible=visible)
     # %%
-    step_2 = vkt.Step("Connection Checks", views=["connection_check","results_table_view"], width=30)
+    step_2 = vkt.Step("Connection Checks", views=["connection_check", "results_table_view"], width=30)
     step_2.text = vkt.Text(
         dedent(
             """

@@ -8,10 +8,15 @@ from app.models.models import (
     ReportData,
     ComplianceSummaryList,
     ConnectionSummaryList,
-    report_headers
+    report_headers,
 )
 from app.core.parse_xlsx_files import get_entities, get_section_by_id
-from app.core.render import render_model, colors_by_group, get_material_color
+from app.core.render import (
+    render_model,
+    colors_by_group,
+    get_material_color,
+    render_legend,
+)
 from app.library.load_db import gen_library
 
 from app.parametrization import Parametrization
@@ -159,7 +164,8 @@ class Controller(vkt.Controller):
             # Reporting
             report.table = output_items
             report.load_combo = selected_lc
-            return vkt.GeometryResult(sections_group)
+            sections_group, labels = render_legend(sections_group=sections_group)
+            return vkt.GeometryResult(sections_group, labels)
 
         if params.step_1.mode == "Connection Design":
             non_compliant_members = {}
@@ -184,6 +190,7 @@ class Controller(vkt.Controller):
                         report_item.section_name = section_name
 
                         if cont_type == "Moment End Plate":
+                            axis = compliance_check.get_alignment(lines, nodes, frame_id)
                             con_list = [
                                 "MEP 70%/35% (Moment/Shear)",
                                 "MEP 100%/50% (Moment/Shear)",
@@ -198,6 +205,7 @@ class Controller(vkt.Controller):
                                     report_item,
                                     capacity,
                                     load,
+                                    axis,
                                 )
                                 if report_item.check == "OK":
                                     if index > selected_con_index:
@@ -270,10 +278,12 @@ class Controller(vkt.Controller):
             report.load_combo = selected_lc
             con_summary_list.parse_from_dict(design_result)
             comp_summary_list.parse_from_dict(non_compliant_members)
-            return vkt.GeometryResult(sections_group)
+            sections_group, labels = render_legend(sections_group=sections_group)
+
+            return vkt.GeometryResult(sections_group, labels)
 
     @vkt.TableView("Frame Results")
-    def results_table_view(self,params, **kwargs):
+    def results_table_view(self, params, **kwargs):
         report_dict = report.serialize()
         frame_result_list = report_dict["table"]
         data = []
@@ -281,12 +291,12 @@ class Controller(vkt.Controller):
         for results_dict in frame_result_list:
             row = list(results_dict.values())
             if results_dict["check"] == "Not OK":
-                row[-1]= vkt.TableCell("Not OK", background_color=vkt.Color.from_hex("#FF6347"))
+                row[-1] = vkt.TableCell("Not OK", background_color=vkt.Color.from_hex("#FF6347"))
             else:
-                row[-1]= vkt.TableCell("OK", background_color=vkt.Color.from_hex("#98FB98"))
+                row[-1] = vkt.TableCell("OK", background_color=vkt.Color.from_hex("#98FB98"))
             data.append(row)
-           
-        return vkt.TableResult(data,column_headers=report_headers)
+
+        return vkt.TableResult(data, column_headers=report_headers)
 
     def generate_report(self, params, **kwargs):
         components = []
