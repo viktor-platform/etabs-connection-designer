@@ -1,6 +1,7 @@
 import viktor as vkt
 from viktor.result import DownloadResult
 from viktor.external.word import render_word_file, WordFileTag
+from icecream import ic
 
 import app.core.compliance_check as compliance_check
 from app.models.models import (
@@ -312,7 +313,16 @@ class Controller(vkt.Controller):
 
             template_path = Path(__file__).parent / "library" / "templates" / "report_template_design.docx"
 
-        for key, vals in report.serialize().items():
+        report_data = report.serialize()
+        
+        # Modify the 'check' values to include color information
+        for row in report_data['table']:
+            if row['check'] == 'Not OK':
+                row['check_color'] = 'FF6347'
+            else:
+                row['check_color'] = '98FB98'
+        ic(report_data)
+        for key, vals in report_data.items():
             components.append(WordFileTag(key, vals))
 
         with open(template_path, "rb") as template:
