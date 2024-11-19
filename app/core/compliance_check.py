@@ -1,5 +1,5 @@
 import viktor as vkt
-from app.core.render import get_jet_color
+from app.core.render import get_color_for_ratio
 
 
 def moment_end_plate_check(
@@ -46,16 +46,14 @@ def moment_end_plate_check(
                     if global_capacity_ratio < capacity_ratio:
                         global_capacity_ratio = capacity_ratio
                         report_item.capacity_ratio = capacity_ratio
-                        r, g, b = get_jet_color(report_item.capacity_ratio)
-                        color = vkt.Color(r=r, g=g, b=b)
+                        color = get_color_for_ratio(report_item.capacity_ratio)
                 else:
                     report_item.Mn = MomentBottom
                     report_item.check = "Not OK"
                     found_break = True
                     capacity_ratio = max([abs(V2) / Shear, abs(M3) / MomentBottom])
                     report_item.capacity_ratio = max([abs(V2) / Shear, abs(M3) / MomentBottom])
-                    r, g, b = get_jet_color(report_item.capacity_ratio)
-                    color = vkt.Color(r=r, g=g, b=b)
+                    color = get_color_for_ratio(report_item.capacity_ratio)
                     break
 
             elif M3 > 0:
@@ -64,15 +62,13 @@ def moment_end_plate_check(
                     if global_capacity_ratio < capacity_ratio:
                         global_capacity_ratio = capacity_ratio
                         report_item.capacity_ratio = capacity_ratio
-                        r, g, b = get_jet_color(report_item.capacity_ratio)
-                        color = vkt.Color(r=r, g=g, b=b)
+                        color = get_color_for_ratio(report_item.capacity_ratio)
                         report_item.check = "OK"
                         report_item.Mn = MomentTop
 
                 else:
                     report_item.capacity_ratio = max([abs(V2) / Shear, abs(M3) / MomentTop])
-                    r, g, b = get_jet_color(report_item.capacity_ratio)
-                    color = vkt.Color(r=r, g=g, b=b)
+                    color = get_color_for_ratio(report_item.capacity_ratio)
                     report_item.check = "Not OK"
                     report_item.Mn = MomentTop
                     found_break = True
@@ -113,14 +109,12 @@ def web_cope(frame_con_capacity: dict, section_name: str, report_item: any, capa
                     capacity_ratio = abs(F3) / Shear
                     report_item.capacity_ratio = capacity_ratio
 
-                    r, g, b = get_jet_color(report_item.capacity_ratio)
-                    color = vkt.Color(r=r, g=g, b=b)
+                    color = get_color_for_ratio(report_item.capacity_ratio)
                     report_item.check = "OK"
                 else:
                     capacity_ratio = abs(F3) / Shear
                     report_item.capacity_ratio = capacity_ratio
-                    r, g, b = get_jet_color(report_item.capacity_ratio)
-                    color = vkt.Color(r=r, g=g, b=b)
+                    color = get_color_for_ratio(report_item.capacity_ratio)
                     report_item.check = "Not OK"
                     found_break = True  # Set the flag to True
                     break  # Break the inner loop
@@ -165,8 +159,7 @@ def base_plate(frame_con_capacity: dict, section_name: str, report_item: any, ca
                     report_item.Vn = shear
 
                     report_item.capacity_ratio = max([abs(F3) / axial, abs(ultimate_shear) / shear])
-                    r, g, b = get_jet_color(report_item.capacity_ratio)
-                    color = vkt.Color(r=r, g=g, b=b)
+                    color = get_color_for_ratio(report_item.capacity_ratio)
                     if abs(F3) < axial and ultimate_shear < shear:
                         report_item.check = "OK"
                     else:

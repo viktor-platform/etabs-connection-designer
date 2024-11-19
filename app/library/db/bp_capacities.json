@@ -1,559 +1,559 @@
 {
     "100UC14": {
         "Base Plate15%": {
-            "Axial": 304.34101118536245,
+            "Axial": 304,
             "Shear": 56
         },
         "Base Plate 30%": {
-            "Axial": 324.3300933093678,
+            "Axial": 324,
             "Shear": 53
         },
         "Base Plate 50%": {
-            "Axial": 318.45216676047636,
+            "Axial": 318,
             "Shear": 57
         },
         "Base Plate 80%": {
-            "Axial": 494.9033999171441,
+            "Axial": 495,
             "Shear": 63
         }
     },
     "150UC23": {
         "Base Plate15%": {
-            "Axial": 396.1236271690961,
+            "Axial": 396,
             "Shear": 56
         },
         "Base Plate 30%": {
-            "Axial": 463.7509484679624,
+            "Axial": 464,
             "Shear": 54
         },
         "Base Plate 50%": {
-            "Axial": 543.3832471470017,
+            "Axial": 543,
             "Shear": 62
         },
         "Base Plate 80%": {
-            "Axial": 684.7892634261784,
+            "Axial": 685,
             "Shear": 59
         }
     },
     "150UC30": {
         "Base Plate15%": {
-            "Axial": 431.82379317477154,
+            "Axial": 432,
             "Shear": 61
         },
         "Base Plate 30%": {
-            "Axial": 469.4566209669031,
+            "Axial": 469,
             "Shear": 60
         },
         "Base Plate 50%": {
-            "Axial": 719.6124685781023,
+            "Axial": 720,
             "Shear": 57
         },
         "Base Plate 80%": {
-            "Axial": 951.3205494103622,
+            "Axial": 951,
             "Shear": 60
         }
     },
     "150UC37": {
         "Base Plate15%": {
-            "Axial": 436.7510909673258,
+            "Axial": 437,
             "Shear": 55
         },
         "Base Plate 30%": {
-            "Axial": 468.22050473141036,
+            "Axial": 468,
             "Shear": 53
         },
         "Base Plate 50%": {
-            "Axial": 781.803642572003,
+            "Axial": 782,
             "Shear": 53
         },
         "Base Plate 80%": {
-            "Axial": 1242.8109548598973,
+            "Axial": 1243,
             "Shear": 54
         }
     },
     "200UC46": {
         "Base Plate15%": {
-            "Axial": 561.295752426228,
+            "Axial": 561,
             "Shear": 60
         },
         "Base Plate 30%": {
-            "Axial": 526.480074856462,
+            "Axial": 526,
             "Shear": 61
         },
         "Base Plate 50%": {
-            "Axial": 873.790868529238,
+            "Axial": 874,
             "Shear": 56
         },
         "Base Plate 80%": {
-            "Axial": 1416.0321423314756,
+            "Axial": 1416,
             "Shear": 80
         }
     },
     "200UC52": {
         "Base Plate15%": {
-            "Axial": 623.577277536867,
+            "Axial": 624,
             "Shear": 56
         },
         "Base Plate 30%": {
-            "Axial": 654.235959821094,
+            "Axial": 654,
             "Shear": 59
         },
         "Base Plate 50%": {
-            "Axial": 1075.3914065482104,
+            "Axial": 1075,
             "Shear": 54
         },
         "Base Plate 80%": {
-            "Axial": 1441.6168230372905,
+            "Axial": 1442,
             "Shear": 85
         }
     },
     "200UC59": {
         "Base Plate15%": {
-            "Axial": 586.5043558461064,
+            "Axial": 587,
             "Shear": 60
         },
         "Base Plate 30%": {
-            "Axial": 776.3487916022842,
+            "Axial": 776,
             "Shear": 52
         },
         "Base Plate 50%": {
-            "Axial": 1045.0900434582825,
+            "Axial": 1045,
             "Shear": 57
         },
         "Base Plate 80%": {
-            "Axial": 1906.0650448102838,
+            "Axial": 1906,
             "Shear": 131
         }
     },
     "250UC72": {
         "Base Plate15%": {
-            "Axial": 693.1219809683569,
+            "Axial": 693,
             "Shear": 51
         },
         "Base Plate 30%": {
-            "Axial": 786.2165817840446,
+            "Axial": 786,
             "Shear": 61
         },
         "Base Plate 50%": {
-            "Axial": 1231.964290072193,
+            "Axial": 1232,
             "Shear": 80
         },
         "Base Plate 80%": {
-            "Axial": 2176.5653801146614,
+            "Axial": 2177,
             "Shear": 136
         }
     },
     "250UC89": {
         "Base Plate15%": {
-            "Axial": 730.4328186868485,
+            "Axial": 730,
             "Shear": 61
         },
         "Base Plate 30%": {
-            "Axial": 948.1282108431586,
+            "Axial": 948,
             "Shear": 54
         },
         "Base Plate 50%": {
-            "Axial": 1697.7923545811532,
+            "Axial": 1698,
             "Shear": 87
         },
         "Base Plate 80%": {
-            "Axial": 2355.714069245885,
+            "Axial": 2356,
             "Shear": 122
         }
     },
     "310UC96": {
         "Base Plate15%": {
-            "Axial": 821.9749101841394,
+            "Axial": 822,
             "Shear": 114
         },
         "Base Plate 30%": {
-            "Axial": 1170.1102329366693,
+            "Axial": 1170,
             "Shear": 122
         },
         "Base Plate 50%": {
-            "Axial": 1760.5812304545452,
+            "Axial": 1761,
             "Shear": 111
         },
         "Base Plate 80%": {
-            "Axial": 2759.0609080962536,
+            "Axial": 2759,
             "Shear": 182
         }
     },
     "310UC118": {
         "Base Plate15%": {
-            "Axial": 970.4913205125207,
+            "Axial": 970,
             "Shear": 114
         },
         "Base Plate 30%": {
-            "Axial": 1436.16972325061,
+            "Axial": 1436,
             "Shear": 106
         },
         "Base Plate 50%": {
-            "Axial": 1819.1517174332298,
+            "Axial": 1819,
             "Shear": 118
         },
         "Base Plate 80%": {
-            "Axial": 3230.318480808023,
+            "Axial": 3230,
             "Shear": 195
         }
     },
     "310UC137": {
         "Base Plate15%": {
-            "Axial": 914.1639890153987,
+            "Axial": 914,
             "Shear": 115
         },
         "Base Plate 30%": {
-            "Axial": 1485.144204424832,
+            "Axial": 1485,
             "Shear": 105
         },
         "Base Plate 50%": {
-            "Axial": 2141.9116617418917,
+            "Axial": 2142,
             "Shear": 122
         },
         "Base Plate 80%": {
-            "Axial": 3495.5912500027293,
+            "Axial": 3496,
             "Shear": 271
         }
     },
     "310UC158": {
         "Base Plate15%": {
-            "Axial": 1041.939561707249,
+            "Axial": 1042,
             "Shear": 119
         },
         "Base Plate 30%": {
-            "Axial": 1863.5280537090725,
+            "Axial": 1864,
             "Shear": 115
         },
         "Base Plate 50%": {
-            "Axial": 2810.218091097231,
+            "Axial": 2810,
             "Shear": 191
         },
         "Base Plate 80%": {
-            "Axial": 4208.0623398827665,
+            "Axial": 4208,
             "Shear": 282
         }
     },
     "350WC197": {
         "Base Plate15%": {
-            "Axial": 1199.629337763537,
+            "Axial": 1200,
             "Shear": 110
         },
         "Base Plate 30%": {
-            "Axial": 1968.071006794344,
+            "Axial": 1968,
             "Shear": 162
         },
         "Base Plate 50%": {
-            "Axial": 3162.7491659096922,
+            "Axial": 3163,
             "Shear": 189
         },
         "Base Plate 80%": {
-            "Axial": 4966.879735235176,
+            "Axial": 4967,
             "Shear": 252
         }
     },
     "350WC230": {
         "Base Plate15%": {
-            "Axial": 1192.6397775030614,
+            "Axial": 1193,
             "Shear": 105
         },
         "Base Plate 30%": {
-            "Axial": 2531.9894891438785,
+            "Axial": 2532,
             "Shear": 167
         },
         "Base Plate 50%": {
-            "Axial": 3727.6938729811577,
+            "Axial": 3728,
             "Shear": 231
         },
         "Base Plate 80%": {
-            "Axial": 6266.820209188701,
+            "Axial": 6267,
             "Shear": 385
         }
     },
     "350WC258": {
         "Base Plate15%": {
-            "Axial": 1274.6938870544586,
+            "Axial": 1275,
             "Shear": 110
         },
         "Base Plate 30%": {
-            "Axial": 2461.0070713343616,
+            "Axial": 2461,
             "Shear": 189
         },
         "Base Plate 50%": {
-            "Axial": 4454.565091232515,
+            "Axial": 4455,
             "Shear": 275
         },
         "Base Plate 80%": {
-            "Axial": 7363.061820559313,
+            "Axial": 7363,
             "Shear": 393
         }
     },
     "350WC280": {
         "Base Plate15%": {
-            "Axial": 1336.9447133211193,
+            "Axial": 1337,
             "Shear": 115
         },
         "Base Plate 30%": {
-            "Axial": 2921.885609945376,
+            "Axial": 2922,
             "Shear": 176
         },
         "Base Plate 50%": {
-            "Axial": 4763.847742391551,
+            "Axial": 4764,
             "Shear": 278
         },
         "Base Plate 80%": {
-            "Axial": 7338.482474934675,
+            "Axial": 7338,
             "Shear": 412
         }
     },
     "400WC144": {
         "Base Plate15%": {
-            "Axial": 1153.7998895526969,
+            "Axial": 1154,
             "Shear": 118
         },
         "Base Plate 30%": {
-            "Axial": 2040.7649790216637,
+            "Axial": 2041,
             "Shear": 166
         },
         "Base Plate 50%": {
-            "Axial": 2749.00711342035,
+            "Axial": 2749,
             "Shear": 183
         },
         "Base Plate 80%": {
-            "Axial": 4740.707676434145,
+            "Axial": 4741,
             "Shear": 236
         }
     },
     "400WC181": {
         "Base Plate15%": {
-            "Axial": 1181.327047345532,
+            "Axial": 1181,
             "Shear": 110
         },
         "Base Plate 30%": {
-            "Axial": 1914.16854267111,
+            "Axial": 1914,
             "Shear": 161
         },
         "Base Plate 50%": {
-            "Axial": 2904.688533147301,
+            "Axial": 2905,
             "Shear": 169
         },
         "Base Plate 80%": {
-            "Axial": 4581.2440102632045,
+            "Axial": 4581,
             "Shear": 274
         }
     },
     "400WC212": {
         "Base Plate15%": {
-            "Axial": 1344.0546699380259,
+            "Axial": 1344,
             "Shear": 110
         },
         "Base Plate 30%": {
-            "Axial": 2118.160145181911,
+            "Axial": 2118,
             "Shear": 180
         },
         "Base Plate 50%": {
-            "Axial": 3371.85066551253,
+            "Axial": 3372,
             "Shear": 162
         },
         "Base Plate 80%": {
-            "Axial": 5544.3261495491915,
+            "Axial": 5544,
             "Shear": 437
         }
     },
     "400WC270": {
         "Base Plate15%": {
-            "Axial": 1474.0286160335827,
+            "Axial": 1474,
             "Shear": 107
         },
         "Base Plate 30%": {
-            "Axial": 3031.2986686142126,
+            "Axial": 3031,
             "Shear": 162
         },
         "Base Plate 50%": {
-            "Axial": 5053.302446577331,
+            "Axial": 5053,
             "Shear": 250
         },
         "Base Plate 80%": {
-            "Axial": 6392.6881836758885,
+            "Axial": 6393,
             "Shear": 397
         }
     },
     "400WC303": {
         "Base Plate15%": {
-            "Axial": 1630.2543666277859,
+            "Axial": 1630,
             "Shear": 117
         },
         "Base Plate 30%": {
-            "Axial": 2978.953173356117,
+            "Axial": 2979,
             "Shear": 165
         },
         "Base Plate 50%": {
-            "Axial": 5345.499572252129,
+            "Axial": 5345,
             "Shear": 276
         },
         "Base Plate 80%": {
-            "Axial": 7789.124616337592,
+            "Axial": 7789,
             "Shear": 542
         }
     },
     "400WC328": {
         "Base Plate15%": {
-            "Axial": 1576.8320347455592,
+            "Axial": 1577,
             "Shear": 120
         },
         "Base Plate 30%": {
-            "Axial": 3211.340998758871,
+            "Axial": 3211,
             "Shear": 165
         },
         "Base Plate 50%": {
-            "Axial": 5456.159401051191,
+            "Axial": 5456,
             "Shear": 406
         },
         "Base Plate 80%": {
-            "Axial": 9012.141901483485,
+            "Axial": 9012,
             "Shear": 649
         }
     },
     "400WC361": {
         "Base Plate15%": {
-            "Axial": 1742.2176391091232,
+            "Axial": 1742,
             "Shear": 119
         },
         "Base Plate 30%": {
-            "Axial": 3511.9999307522403,
+            "Axial": 3512,
             "Shear": 168
         },
         "Base Plate 50%": {
-            "Axial": 6680.704800602463,
+            "Axial": 6681,
             "Shear": 436
         },
         "Base Plate 80%": {
-            "Axial": 9995.202177635569,
+            "Axial": 9995,
             "Shear": 612
         }
     },
     "500WC383": {
         "Base Plate15%": {
-            "Axial": 1907.6156209796438,
+            "Axial": 1908,
             "Shear": 119
         },
         "Base Plate 30%": {
-            "Axial": 3511.3433190645933,
+            "Axial": 3511,
             "Shear": 273
         },
         "Base Plate 50%": {
-            "Axial": 6471.489369988237,
+            "Axial": 6471,
             "Shear": 408
         },
         "Base Plate 80%": {
-            "Axial": 10039.128979966164,
+            "Axial": 10039,
             "Shear": 557
         }
     },
     "500WC414": {
         "Base Plate15%": {
-            "Axial": 2093.1885223947206,
+            "Axial": 2093,
             "Shear": 122
         },
         "Base Plate 30%": {
-            "Axial": 4621.56598709733,
+            "Axial": 4622,
             "Shear": 239
         },
         "Base Plate 50%": {
-            "Axial": 6382.188291786162,
+            "Axial": 6382,
             "Shear": 425
         },
         "Base Plate 80%": {
-            "Axial": 11272.039583974109,
+            "Axial": 11272,
             "Shear": 629
         }
     },
     "500WC440": {
         "Base Plate15%": {
-            "Axial": 2395.0540006784877,
+            "Axial": 2395,
             "Shear": 125
         },
         "Base Plate 30%": {
-            "Axial": 3995.397691193472,
+            "Axial": 3995,
             "Shear": 254
         },
         "Base Plate 50%": {
-            "Axial": 8042.669244425475,
+            "Axial": 8043,
             "Shear": 442
         },
         "Base Plate 80%": {
-            "Axial": 12386.260141858033,
+            "Axial": 12386,
             "Shear": 564
         }
     },
     "500WC228": {
         "Base Plate15%": {
-            "Axial": 1611.738580878049,
+            "Axial": 1612,
             "Shear": 114
         },
         "Base Plate 30%": {
-            "Axial": 2778.258130971247,
+            "Axial": 2778,
             "Shear": 196
         },
         "Base Plate 50%": {
-            "Axial": 4430.958101607373,
+            "Axial": 4431,
             "Shear": 372
         },
         "Base Plate 80%": {
-            "Axial": 6417.451556775839,
+            "Axial": 6417,
             "Shear": 440
         }
     },
     "500WC267": {
         "Base Plate15%": {
-            "Axial": 1684.2665674472582,
+            "Axial": 1684,
             "Shear": 109
         },
         "Base Plate 30%": {
-            "Axial": 2758.021511354674,
+            "Axial": 2758,
             "Shear": 164
         },
         "Base Plate 50%": {
-            "Axial": 4460.321795811834,
+            "Axial": 4460,
             "Shear": 262
         },
         "Base Plate 80%": {
-            "Axial": 7572.679581083178,
+            "Axial": 7573,
             "Shear": 410
         }
     },
     "500WC290": {
         "Base Plate15%": {
-            "Axial": 1829.4582777561477,
+            "Axial": 1829,
             "Shear": 112
         },
         "Base Plate 30%": {
-            "Axial": 2919.2086719072645,
+            "Axial": 2919,
             "Shear": 167
         },
         "Base Plate 50%": {
-            "Axial": 5240.360722638793,
+            "Axial": 5240,
             "Shear": 262
         },
         "Base Plate 80%": {
-            "Axial": 8384.638369305894,
+            "Axial": 8385,
             "Shear": 451
         }
     },
     "500WC340": {
         "Base Plate15%": {
-            "Axial": 1703.104807209235,
+            "Axial": 1703,
             "Shear": 104
         },
         "Base Plate 30%": {
-            "Axial": 3420.426463247566,
+            "Axial": 3420,
             "Shear": 186
         },
         "Base Plate 50%": {
-            "Axial": 5095.379232741706,
+            "Axial": 5095,
             "Shear": 400
         },
         "Base Plate 80%": {
-            "Axial": 7973.30483151695,
+            "Axial": 7973,
             "Shear": 653
         }
     }
