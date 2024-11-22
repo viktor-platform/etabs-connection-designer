@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 connection_types = [
     "MEP 70%/35% (Moment/Shear)",
@@ -12,15 +13,23 @@ connection_types = [
 ]
 
 
-def load_json(file_path: str):
-    with open(file_path) as jsonfile:
+def load_json(file_path: Path):
+    with file_path.open() as jsonfile:
         data = json.load(jsonfile)
     return data
 
 
 def gen_library():
-    bp = load_json(r"app\library\db\bp_capacities.json")
-    mep = load_json(r"app\library\db\mep_capacities.json")
-    wcp = load_json(r"app\library\db\web_cope_capacities.json")
+    # Get the directory of the current script
+    current_dir = Path(__file__).parent
+    
+    # Construct paths using Path
+    bp_path = current_dir / "library" / "db" / "bp_capacities.json"
+    mep_path = current_dir / "library" / "db" / "mep_capacities.json"
+    wcp_path = current_dir / "library" / "db" / "web_cope_capacities.json"
+
+    bp = load_json(bp_path)
+    mep = load_json(mep_path)
+    wcp = load_json(wcp_path)
 
     return {"Web Cleat": wcp, "Moment End Plate": mep, "Base Plate": bp}
