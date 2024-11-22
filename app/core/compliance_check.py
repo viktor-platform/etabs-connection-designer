@@ -40,7 +40,7 @@ def moment_end_plate_check(
             # Check compliance
             if M3 <= 0:
                 if abs(V2) < Shear and abs(M3) < MomentBottom:
-                    report_item.check = "MomentBottom"
+                    report_item.check = "OK"
                     report_item.Mn = MomentTop
                     capacity_ratio = max([abs(V2) / Shear, abs(M3) / MomentBottom])
                     if global_capacity_ratio < capacity_ratio:
