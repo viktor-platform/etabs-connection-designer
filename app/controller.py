@@ -35,7 +35,7 @@ class Controller(vkt.Controller):
 
     @vkt.GeometryView("3D model", duration_guess=10, x_axis_to_right=True)
     def generate_structure(self, params, **kwargs):
-        xlsx_file = params.step_1.csv_file
+        xlsx_file = params.step_1.tab_1.csv_file
         file_content = xlsx_file.file.getvalue_binary()
         nodes, lines, groups, sections, load_combos = get_entities(file_content)
 
@@ -43,7 +43,7 @@ class Controller(vkt.Controller):
         groups_conn_props = {}
 
         # Populate connection properties
-        for con_dict in params.step_1.connections:
+        for con_dict in params.step_1.tab_1.connections:
             groups_conn_props[con_dict.groups] = {
                 "color": con_dict.color,
                 "contype": con_dict.connection_type,
@@ -74,19 +74,19 @@ class Controller(vkt.Controller):
         comp_summary_list.clear()
         con_summary_list.clear()
         #
-        xlsx_file = params.step_1.csv_file.file
+        xlsx_file = params.step_1.tab_1.csv_file.file
         file_content = xlsx_file.getvalue_binary()
         nodes, lines, groups, sections, load_combos = get_entities(file_content)
         frame_by_group = {}
         groups_conn_props = {}
         # Params.step_1.connections -> Dynamic array with Group Name, contype, color
         # this part just converts from Munch to a dictioanry with the keys bein Group Name
-        for con_dict in params.step_1.connections:
+        for con_dict in params.step_1.tab_1.connections:
             conn_props = {
                 "color": con_dict.color,
                 "contype": con_dict.connection_type,
             }
-            if params.step_1.mode == "Connection Check":
+            if params.step_1.tab_1.mode == "Connection Check":
                 conn_props["capacity"] = con_dict.capacities
             groups_conn_props[con_dict.groups] = conn_props
         # db -> dictionary with keys equal to conntype Web Cleat, Moment End Plate, Baseplate.
@@ -96,7 +96,7 @@ class Controller(vkt.Controller):
         selected_lc = params.step_2.load_combos
         output_items = []
 
-        if params.step_1.mode == "Connection Check":
+        if params.step_1.tab_1.mode == "Connection Check":
             for group_name, group_vals in groups.items():
                 frame_color_set = set()
                 for frames_in_groups in group_vals["frame_ids"]:
@@ -170,7 +170,7 @@ class Controller(vkt.Controller):
             sections_group, labels = render_legend(sections_group=sections_group)
             return vkt.GeometryResult(sections_group, labels)
 
-        if params.step_1.mode == "Connection Design":
+        if params.step_1.tab_1.mode == "Connection Design":
             non_compliant_members = {}
             design_result = {}
             for group_name, group_vals in groups.items():
@@ -306,7 +306,7 @@ class Controller(vkt.Controller):
 
         template_path = Path(__file__).parent / "library" / "templates" / "report_template.docx"
 
-        if params.step_1.mode == "Connection Design":
+        if params.step_1.tab_1.mode == "Connection Design":
             for key, vals in con_summary_list.serialize().items():
                 components.append(WordFileTag(key, vals))
 
