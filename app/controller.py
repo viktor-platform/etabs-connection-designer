@@ -299,7 +299,7 @@ class Controller(vkt.Controller):
                 row[-1] = vkt.TableCell("OK", background_color=vkt.Color.from_hex("#98FB98"))
             data.append(row)
 
-        return vkt.TableResult(data, column_headers=report_headers)
+        return vkt.TableResult(data, column_headers=report_headers, enable_sorting_and_filtering=True)
 
     def generate_report(self, params, **kwargs):
         components = []
