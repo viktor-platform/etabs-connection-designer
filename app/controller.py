@@ -120,6 +120,8 @@ class Controller(vkt.Controller):
                             report_item.load_combo = selected_lc
                             report_item.section_name = section_name
 
+                            axis = compliance_check.get_alignment(lines, nodes, frames_in_groups)
+
                             if cont_type == "Moment End Plate":
                                 color, report_item = compliance_check.moment_end_plate_check(
                                     frame_con_capacity,
@@ -127,6 +129,7 @@ class Controller(vkt.Controller):
                                     report_item,
                                     capacity,
                                     load,
+                                    axis
                                 )
 
                             if cont_type == "Web Cleat":
