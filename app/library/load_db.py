@@ -24,9 +24,9 @@ def gen_library():
     current_dir = Path(__file__).parent
     
     # Construct paths using Path
-    bp_path = current_dir / "library" / "db" / "bp_capacities.json"
-    mep_path = current_dir / "library" / "db" / "mep_capacities.json"
-    wcp_path = current_dir / "library" / "db" / "web_cope_capacities.json"
+    bp_path = current_dir / "db" / "bp_capacities.json"
+    mep_path = current_dir / "db" / "mep_capacities.json"
+    wcp_path = current_dir / "db" / "web_cope_capacities.json"
 
     bp = load_json(bp_path)
     mep = load_json(mep_path)
