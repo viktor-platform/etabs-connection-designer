@@ -15,27 +15,28 @@ def read_file(file) -> list:
 
 
 def get_possible_columns(params, **kwargs):
-    if params.step_1.csv_file:
-        result = read_file(params.step_1.csv_file)
+    if params.step_1.tab_1.csv_file:
+        result = read_file(params.step_1.tab_1.csv_file)
         return result[0]
     return ["First upload a .xlsx file"]
 
 
 def get_possible_load_combos(params, **kwargs):
-    if params.step_1.csv_file:
-        return read_file(params.step_1.csv_file)[1]
+    if params.step_1.tab_1.csv_file:
+        return read_file(params.step_1.tab_1.csv_file)[1]
     return ["First upload a .xlsx file"]
 
 
 def visible(params, **kwargs):
-    if params.step_1.mode == "Connection Design":
+    if params.step_1.tab_1.mode == "Connection Design":
         return False
     return True
 
 
 class Parametrization(vkt.Parametrization):
     step_1 = vkt.Step("", views=["generate_structure"])
-    step_1.main_text = vkt.Text(
+    step_1.tab_1 = vkt.Tab('Inputs')
+    step_1.tab_1.main_text = vkt.Text(
         dedent(
             """
             # ETABS Connection Designer
@@ -45,7 +46,7 @@ class Parametrization(vkt.Parametrization):
             """
         )
     )
-    step_1.upload_text = vkt.Text(
+    step_1.tab_1.upload_text = vkt.Text(
         dedent(
             """
             ## Step 1: Upload Your `.xlsx` File
@@ -54,12 +55,12 @@ class Parametrization(vkt.Parametrization):
         """
         )
     )
-    step_1.csv_file = vkt.FileField(
+    step_1.tab_1.csv_file = vkt.FileField(
         "**Upload a .xlsx file:**",
         flex=50,
     )
-    step_1.lines = vkt.LineBreak()
-    step_1.calc = vkt.Text(
+    step_1.tab_1.lines = vkt.LineBreak()
+    step_1.tab_1.calc = vkt.Text(
         dedent(
             """
             ## Step 2: Define Calculation Mode
@@ -69,13 +70,13 @@ class Parametrization(vkt.Parametrization):
         """
         )
     )
-    step_1.mode = vkt.OptionField(
+    step_1.tab_1.mode = vkt.OptionField(
         "Select Calculation Mode",
         options=["Connection Check", "Connection Design"],
         default="Connection Check",
         variant="radio-inline",
     )
-    step_1.assign_text = vkt.Text(
+    step_1.tab_1.assign_text = vkt.Text(
         dedent(
             """
             ## Step 3: Assign Connection Types to Design Groups
@@ -86,13 +87,27 @@ class Parametrization(vkt.Parametrization):
         )
     )
 
-    step_1.connections = vkt.DynamicArray("Assign Groups")
-    step_1.connections.groups = vkt.OptionField("Available Groups", options=get_possible_columns)
-    step_1.connections.connection_type = vkt.OptionField(
+    step_1.tab_1.connections = vkt.DynamicArray("Assign Groups")
+    step_1.tab_1.connections.groups = vkt.OptionField("Available Groups", options=get_possible_columns)
+    step_1.tab_1.connections.connection_type = vkt.OptionField(
         "Connection Type", options=["Web Cleat", "Moment End Plate", "Base Plate"]
     )
-    step_1.connections.color = vkt.ColorField("Color", default=vkt.Color(128, 128, 128))
-    step_1.connections.capacities = vkt.OptionField("Connection Capacity", options=connection_types, visible=visible)
+    step_1.tab_1.connections.color = vkt.ColorField("Color", default=vkt.Color(128, 128, 128))
+    step_1.tab_1.connections.capacities = vkt.OptionField("Connection Capacity", options=connection_types, visible=visible)
+
+    step_1.tab_2 = vkt.Tab('Connection Types')
+    step_1.tab_2.title_mep = vkt.Text("### Moment End Plate")
+    step_1.tab_2.img_mep = vkt.Image(
+        path="moment_end_plate.png", align="center", caption="Figure 1: Moment End Plate", max_width=250
+    )
+    step_1.tab_2.title_wc = vkt.Text("### Web Cleat")
+    step_1.tab_2.img_wc = vkt.Image(
+        path="web_cleat.png", align="center", caption="Figure 2: Web Cleat", max_width=250
+    )
+    step_1.tab_2.title_bp = vkt.Text("### Base Plate")
+    step_1.tab_2.img_bp = vkt.Image(
+        path="base_plate.png", align="center", caption="Figure 3: Base Plate", max_width=250
+    )
     # %%
     step_2 = vkt.Step("Connection Checks", views=["connection_check", "results_table_view"], width=30)
     step_2.text = vkt.Text(
