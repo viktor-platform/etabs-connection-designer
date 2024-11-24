@@ -2,7 +2,6 @@ import viktor as vkt
 
 NODE_RADIUS = 40
 
-
 def render_model(
     sections: dict,
     lines: dict,
@@ -55,9 +54,13 @@ def render_model(
 def colors_by_group(frame_by_group: dict, frame_id: int):
     maybe_color = frame_by_group.get(frame_id)
     if maybe_color:
-        material = maybe_color["material"]
+        if isinstance(maybe_color["material"], tuple):
+            r,g,b = maybe_color["material"]
+            material = vkt.Material(color = vkt.Color(r=r, g=g, b=b))
+        else:
+            material = maybe_color["material"]
     else:
-        material = vkt.Material(vkt.Color(r=40, g=40, b=40))
+        material = vkt.Material(color=vkt.Color(r=40, g=40, b=40))
     return material
 
 
@@ -200,11 +203,11 @@ def plotly_model(lines: dict, nodes: dict, color_dict: dict):
 
 def get_color_for_ratio(ratio):
     if ratio < 1.0:
-        return vkt.Color(0, 255, 0)  # Green
+        return 0, 255, 0  # Green
     elif 1.0 <= ratio <= 1.1:
-        return vkt.Color(255, 165, 0)  # Orange
+        return 255, 165, 0  # Orange
     else:
-        return vkt.Color(255, 0, 0)  # Red
+        return 255, 0, 0  # Red
 
 def render_legend(sections_group: list):
     legend_cord_x = 0

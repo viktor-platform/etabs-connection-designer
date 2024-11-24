@@ -46,13 +46,13 @@ class OutputItem(BaseModel):
     Vn: float | None = None
     Mn: float | None = None
     Pn: float | None = None
-    capacity_ratio: str | None = None
+    capacity_ratio: float | None = None
     check: str | None = None
 
     def serialize(self) -> dict[str, any]:
         # Replace None with "-" and round float values to 2 decimal places
         return {
-            k: (round(v, 2) if isinstance(v, float) else v if v is not None else "-") for k, v in self.dict().items()
+            k: (round(v, 2) if isinstance(v, float) else v if v is not None else "-") for k, v in self.model_dump().items()
         }
 
 
